@@ -1,0 +1,22 @@
+<p>
+  <b>Select Bogi</b>
+  <p-dropdown  (onChange)="bogiSelected($event.value)" [options]="bogiList" [(ngModel)]="selectedBogi" optionLabel="name"></p-dropdown>
+
+</p>
+
+
+
+<table class="table">
+  
+          <tr >
+                <th *ngFor="let tableCols of passengersTableCol">
+                  {{ tableCols.header }}
+                </th>
+              </tr>
+                  <tr *ngFor="let passenger of passengers">
+                      <td *ngFor="let tableCols of passengersTableCol">
+                          {{ passenger[tableCols.field]}}
+                      </td>                        
+                  </tr>
+         
+</table>
