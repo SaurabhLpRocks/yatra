@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using netcoreauth.api.Business;
+using netcoreauth.api.Repository;
 
 namespace netcoreauth.api
 {
@@ -76,15 +78,18 @@ namespace netcoreauth.api
                 };
             });
 
-            //-------------------------------
-            //services.AddAuthentication(options =>
-            //{
-            //    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            //})
-            //.AddJwtBearer(options =>
-            //{
-            //    options.TokenValidationParameters = tokenValidationParameters;
-            //});
+      //-------------------------------
+      //services.AddAuthentication(options =>
+      //{
+      //    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+      //})
+      //.AddJwtBearer(options =>
+      //{
+      //    options.TokenValidationParameters = tokenValidationParameters;
+      //});
+
+      services.AddScoped<ITrainService, TrainService>();
+      services.AddScoped<ITrainRepository, TrainRepository>();
 
             services.AddSwaggerGen(c =>
             {

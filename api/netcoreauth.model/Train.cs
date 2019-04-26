@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -9,7 +9,9 @@ namespace netcoreauth.model
     {
         [Key]
         public int Id { get; set; }
-        public string TrainName { get; set; }  
+        public string TrainName { get; set; }
+        public string From { get; set; }
+        public string To { get; set; }
         public List<Prediction> Prediction { get; set; }
     }
 }
