@@ -28,26 +28,73 @@ import { ClientViewService } from './client-view.service';
   ],
 })
 export class ClientViewComponent implements OnInit {
+  isDataPresent: boolean = false;
+  selectedStartPoint: { name: string; code: string };
+  selectedEndPoint: { name: string; code: string };
   trainProbabilityDetails: any[];
   cols: any[];
   trainPredictionClassCol: any[];
   constructor(private clientViewService: ClientViewService) {}
 
+  stations: any[];
+
+  showStartStationError: boolean = false;
+
+  showEndStationError: boolean = false;
+
+  bothStationSameError: boolean = false;
+
   ngOnInit() {
-    this.clientViewService
-      .getTrainProbabilityData()
-      .pipe(first())
-      .subscribe(classDetails => {
-        this.trainProbabilityDetails = classDetails;
-        console.log('trainProbabilityDetails', this.trainProbabilityDetails);
-      });
+    // this.clientViewService
+    //   .getTrainProbabilityData()
+    //   .pipe(first())
+    //   .subscribe(classDetails => {
+    //     this.trainProbabilityDetails = classDetails;
+    //     console.log('trainProbabilityDetails', this.trainProbabilityDetails);
+    //   });
 
     this.cols = [{ field: 'trainNumber', header: 'Train' }, { field: 'name', header: 'Name' }];
 
     this.trainPredictionClassCol = [{ field: 'class', header: 'Class' }, { field: 'accuracy', header: 'Accuracy' }];
+
+    this.clientViewService
+      .getStationsList()
+      .pipe()
+      .subscribe(data => {
+        this.stations = data;
+      });
   }
 
   tableRowClick(train) {
     console.log('Clicked', train);
+  }
+
+  handleClick(event) {
+    this.showStartStationError = this.showEndStationError = this.bothStationSameError = false;
+    if (!this.selectedStartPoint || !this.selectedStartPoint.code) {
+      this.showStartStationError = true;
+    }
+
+    if (!this.selectedEndPoint || !this.selectedEndPoint.code) {
+      this.showEndStationError = true;
+    }
+
+    if (this.showStartStationError || this.showEndStationError) {
+      return false;
+    }
+
+    if (this.selectedStartPoint == this.selectedEndPoint) {
+      this.bothStationSameError = true;
+      return false;
+    }
+
+    this.clientViewService
+      .getTrainProbabilityData(this.selectedStartPoint.name, this.selectedEndPoint.name)
+      .pipe(first())
+      .subscribe(classDetails => {
+        this.isDataPresent = true;
+        this.trainProbabilityDetails = classDetails;
+        console.log('trainProbabilityDetails', this.trainProbabilityDetails);
+      });
   }
 }
