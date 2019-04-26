@@ -1,22 +1,26 @@
 <p>
   <b>Select Bogi</b>
-  <p-dropdown  (onChange)="bogiSelected($event.value)" [options]="bogiList" [(ngModel)]="selectedBogi" optionLabel="name"></p-dropdown>
-
+  <p-dropdown (onChange)="bogiSelected($event.value)" [options]="bogiList" [(ngModel)]="selectedBogi" optionLabel="name"></p-dropdown>
 </p>
 
-
-
 <table class="table">
-  
-          <tr >
-                <th *ngFor="let tableCols of passengersTableCol">
-                  {{ tableCols.header }}
-                </th>
-              </tr>
-                  <tr *ngFor="let passenger of passengers">
-                      <td *ngFor="let tableCols of passengersTableCol">
-                          {{ passenger[tableCols.field]}}
-                      </td>                        
-                  </tr>
-         
+  <tr>
+    <th *ngFor="let tableCols of passengersTableCol">
+      {{ tableCols.header }}
+    </th>
+  </tr>
+  <tr *ngFor="let passenger of passengers">
+    <td *ngFor="let tableCols of passengersTableCol">
+      <span *ngIf="tableCols.field !== 'isPresent'; else toggle">{{ passenger[tableCols.field] }}</span>
+      <ng-template #toggle>
+        <ui-switch
+          size="medium"
+          labelOn="Yes"
+          labelOff="No"
+          (change)="togglePassengerPresence($event, passenger)"
+          [(ngModel)]="passenger[tableCols.field]"
+        ></ui-switch>
+      </ng-template>
+    </td>
+  </tr>
 </table>

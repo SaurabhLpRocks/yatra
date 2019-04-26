@@ -160,7 +160,7 @@ namespace netcoreauth.api.Controllers
 		//	int createdId = userRepository.Add(user);
   //          if (createdId > 0)
   //          {
-		//		user.Id = createdId;
+		//		user.TrainNumber = createdId;
   //              sent = Utilities.ActiveMailAsync(user.Email);
   //          }
   //          dynamic result = new
