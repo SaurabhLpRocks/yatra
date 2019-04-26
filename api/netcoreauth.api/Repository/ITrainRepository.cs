@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +8,6 @@ namespace netcoreauth.api.Repository
 {
     public interface ITrainRepository
     {
-        List<Train> GetTrains();
+        List<Train> GetTrains(string from, string to);
     }
 }

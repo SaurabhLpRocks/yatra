@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +10,8 @@ using netcoreauth.model;
 namespace netcoreauth.api.Controllers
 {
     [Route("api/[controller]")]
-    public class TrainController : Controller
+    [ApiController]
+  public class TrainController : ControllerBase
     {
         private readonly ITrainService _iTrainService;
         public TrainController(ITrainService iTrainService)
@@ -19,10 +20,10 @@ namespace netcoreauth.api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(string from, string to)
         {
-            var data = _iTrainService.GetTrains();
-            return View();
+            var data = _iTrainService.GetTrains(from, to);
+            return Ok(data);
         }
     }
 }
