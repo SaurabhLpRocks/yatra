@@ -1,74 +1,18 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-import {
-  NbActionsModule,
-  NbCardModule,
-  NbLayoutModule,
-  NbMenuModule,
-  NbRouteTabsetModule,
-  NbSearchModule,
-  NbSidebarModule,
-  NbTabsetModule,
-  NbThemeModule,
-  NbUserModule,
-  NbCheckboxModule,
-  NbPopoverModule,
-  NbContextMenuModule,
-  NbProgressBarModule,
-  NbCalendarModule,
-  NbCalendarRangeModule,
-  NbStepperModule,
-  NbButtonModule,
-  NbInputModule,
-  NbAccordionModule,
-  NbDatepickerModule,
-  NbDialogModule,
-  NbWindowModule,
-  NbListModule,
-  NbToastrModule,
-  NbAlertModule,
-  NbSpinnerModule,
-  NbRadioModule,
-  NbSelectModule,
-  NbChatModule,
-  NbTooltipModule,
-  NbCalendarKitModule,
-} from '@nebular/theme';
-
 import { NbSecurityModule } from '@nebular/security';
-
-import {
-  FooterComponent,
-  HeaderComponent,
-  SearchInputComponent,
-  ThemeSettingsComponent,
-  SwitcherComponent,
-  LayoutDirectionSwitcherComponent,
-  ThemeSwitcherComponent,
-  TinyMCEComponent,
-  ThemeSwitcherListComponent,
-  ToggleSettingsButtonComponent,
-} from './components';
-import {
-  CapitalizePipe,
-  PluralPipe,
-  RoundPipe,
-  TimingPipe,
-  NumberWithCommasPipe,
-  EvaIconsPipe,
-} from './pipes';
-import {
-  OneColumnLayoutComponent,
-  SampleLayoutComponent,
-  ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
-} from './layouts';
-import { DEFAULT_THEME } from './styles/theme.default';
-import { COSMIC_THEME } from './styles/theme.cosmic';
+import { NbAccordionModule, NbActionsModule, NbAlertModule, NbButtonModule, NbCalendarKitModule, NbCalendarModule, NbCalendarRangeModule, NbCardModule, NbChatModule, NbCheckboxModule, NbContextMenuModule, NbDatepickerModule, NbDialogModule, NbInputModule, NbLayoutModule, NbListModule, NbMenuModule, NbPopoverModule, NbProgressBarModule, NbRadioModule, NbRouteTabsetModule, NbSearchModule, NbSelectModule, NbSidebarModule, NbSpinnerModule, NbStepperModule, NbTabsetModule, NbThemeModule, NbToastrModule, NbTooltipModule, NbUserModule, NbWindowModule } from '@nebular/theme';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FooterComponent, HeaderComponent, LayoutDirectionSwitcherComponent, SearchInputComponent, SwitcherComponent, ThemeSettingsComponent, ThemeSwitcherComponent, ThemeSwitcherListComponent, TinyMCEComponent, ToggleSettingsButtonComponent } from './components';
+import { OneColumnLayoutComponent, SampleLayoutComponent, ThreeColumnsLayoutComponent, TwoColumnsLayoutComponent } from './layouts';
+import { CapitalizePipe, EvaIconsPipe, NumberWithCommasPipe, PluralPipe, RoundPipe, TimingPipe } from './pipes';
 import { CORPORATE_THEME } from './styles/theme.corporate';
+import { COSMIC_THEME } from './styles/theme.cosmic';
+import { DEFAULT_THEME } from './styles/theme.default';
+
+
+
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
 
@@ -141,7 +85,7 @@ const PIPES = [
 const NB_THEME_PROVIDERS = [
   ...NbThemeModule.forRoot(
     {
-      name: 'cosmic',
+      name: 'corporate',
     },
     [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME ],
   ).providers,
