@@ -28,22 +28,31 @@ import { ClientViewService } from './client-view.service';
   ],
 })
 export class ClientViewComponent implements OnInit {
-  cars: any[];
-
+  trainProbabilityDetails: any[];
   cols: any[];
+  trainPredictionClassCol : any[];
   constructor(private clientViewService: ClientViewService) {}
 
   ngOnInit() {
-    this.clientViewService.getFakeCarData().subscribe(cars => {
-      this.cars = cars;
-      console.log('cars', this.cars);
+
+    this.clientViewService.getTrainProbabilityData().subscribe(classDetails => {
+      this.trainProbabilityDetails = classDetails;
+      console.log('trainProbabilityDetails', this.trainProbabilityDetails);
     });
 
     this.cols = [
-      { field: 'vin', header: 'Vin' },
-      { field: 'year', header: 'Year' },
-      { field: 'brand', header: 'Brand' },
-      { field: 'color', header: 'Color' },
+      { field: 'train', header: 'Train' },
+      { field: 'name', header: 'Name' },
     ];
+
+    this.trainPredictionClassCol = [
+      { field: 'class', header: 'Class' },
+      { field: 'accuracy', header: 'Accuracy' },
+    ];
+  }
+
+  tableRowClick(train){
+
+    console.log("Clicked", train);
   }
 }

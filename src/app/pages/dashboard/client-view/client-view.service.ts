@@ -6,13 +6,19 @@ import { Observable, of as observableOf } from 'rxjs';
 })
 export class ClientViewService {
   constructor() {}
-
-  getFakeCarData(): Observable<any[]> {
-    const cars: any[] = [
-      { vin: 'dsad231ff', year: 1978, brand: 'Audi', color: 'red' },
-      { vin: 'dsad231f2', year: 2011, brand: 'wolkwagon', color: 'yellow' },
-    ];
-
-    return observableOf(cars);
+  getTrainProbabilityData(): Observable<any[]> {
+    const trainsProbabilityDetails: any[] =   [
+      {
+        train : 12345,
+        name : "Gitanjali",
+        prediction : [{ class : "sleeper", accuracy : 20}, { class : "AC2", accuracy : 50}, { class : "AC3", accuracy : 100}]
+      },
+      {
+        train : 5678,
+        name : "ABC",
+        prediction : [{ class : "sleeper", accuracy : 10}, { class : "AC2", accuracy : 50}]
+      }
+    ]
+    return observableOf(trainsProbabilityDetails);
   }
 }
