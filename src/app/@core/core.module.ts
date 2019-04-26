@@ -1,56 +1,50 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
-import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
+import { NbRoleProvider, NbSecurityModule } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
-
-import { throwIfAlreadyLoaded } from './module-import-guard';
-import {
-  AnalyticsService,
-  LayoutService,
-  PlayerService,
-  StateService,
-} from './utils';
-import { UserData } from './data/users';
-import { ElectricityData } from './data/electricity';
-import { SmartTableData } from './data/smart-table';
-import { UserActivityData } from './data/user-activity';
-import { OrdersChartData } from './data/orders-chart';
-import { ProfitChartData } from './data/profit-chart';
-import { TrafficListData } from './data/traffic-list';
-import { EarningData } from './data/earning';
-import { OrdersProfitChartData } from './data/orders-profit-chart';
-import { TrafficBarData } from './data/traffic-bar';
-import { ProfitBarAnimationChartData } from './data/profit-bar-animation-chart';
-import { TemperatureHumidityData } from './data/temperature-humidity';
-import { SolarData } from './data/solar';
-import { TrafficChartData } from './data/traffic-chart';
-import { StatsBarData } from './data/stats-bar';
+import { environment } from '../../environments/environment.prod';
 import { CountryOrderData } from './data/country-order';
-import { StatsProgressBarData } from './data/stats-progress-bar';
-import { VisitorsAnalyticsData } from './data/visitors-analytics';
+import { EarningData } from './data/earning';
+import { ElectricityData } from './data/electricity';
+import { OrdersChartData } from './data/orders-chart';
+import { OrdersProfitChartData } from './data/orders-profit-chart';
+import { ProfitBarAnimationChartData } from './data/profit-bar-animation-chart';
+import { ProfitChartData } from './data/profit-chart';
 import { SecurityCamerasData } from './data/security-cameras';
-
-import { UserService } from './mock/users.service';
-import { ElectricityService } from './mock/electricity.service';
-import { SmartTableService } from './mock/smart-table.service';
-import { UserActivityService } from './mock/user-activity.service';
-import { OrdersChartService } from './mock/orders-chart.service';
-import { ProfitChartService } from './mock/profit-chart.service';
-import { TrafficListService } from './mock/traffic-list.service';
-import { EarningService } from './mock/earning.service';
-import { OrdersProfitChartService } from './mock/orders-profit-chart.service';
-import { TrafficBarService } from './mock/traffic-bar.service';
-import { ProfitBarAnimationChartService } from './mock/profit-bar-animation-chart.service';
-import { TemperatureHumidityService } from './mock/temperature-humidity.service';
-import { SolarService } from './mock/solar.service';
-import { TrafficChartService } from './mock/traffic-chart.service';
-import { StatsBarService } from './mock/stats-bar.service';
+import { SmartTableData } from './data/smart-table';
+import { SolarData } from './data/solar';
+import { StatsBarData } from './data/stats-bar';
+import { StatsProgressBarData } from './data/stats-progress-bar';
+import { TemperatureHumidityData } from './data/temperature-humidity';
+import { TrafficBarData } from './data/traffic-bar';
+import { TrafficChartData } from './data/traffic-chart';
+import { TrafficListData } from './data/traffic-list';
+import { UserActivityData } from './data/user-activity';
+import { UserData } from './data/users';
+import { VisitorsAnalyticsData } from './data/visitors-analytics';
 import { CountryOrderService } from './mock/country-order.service';
-import { StatsProgressBarService } from './mock/stats-progress-bar.service';
-import { VisitorsAnalyticsService } from './mock/visitors-analytics.service';
-import { SecurityCamerasService } from './mock/security-cameras.service';
+import { EarningService } from './mock/earning.service';
+import { ElectricityService } from './mock/electricity.service';
 import { MockDataModule } from './mock/mock-data.module';
+import { OrdersChartService } from './mock/orders-chart.service';
+import { OrdersProfitChartService } from './mock/orders-profit-chart.service';
+import { ProfitBarAnimationChartService } from './mock/profit-bar-animation-chart.service';
+import { ProfitChartService } from './mock/profit-chart.service';
+import { SecurityCamerasService } from './mock/security-cameras.service';
+import { SmartTableService } from './mock/smart-table.service';
+import { SolarService } from './mock/solar.service';
+import { StatsBarService } from './mock/stats-bar.service';
+import { StatsProgressBarService } from './mock/stats-progress-bar.service';
+import { TemperatureHumidityService } from './mock/temperature-humidity.service';
+import { TrafficBarService } from './mock/traffic-bar.service';
+import { TrafficChartService } from './mock/traffic-chart.service';
+import { TrafficListService } from './mock/traffic-list.service';
+import { UserActivityService } from './mock/user-activity.service';
+import { UserService } from './mock/users.service';
+import { VisitorsAnalyticsService } from './mock/visitors-analytics.service';
+import { throwIfAlreadyLoaded } from './module-import-guard';
+import { AnalyticsService, LayoutService, PlayerService, StateService } from './utils';
 
 const socialLinks = [
   {
@@ -92,6 +86,19 @@ const DATA_SERVICES = [
   { provide: SecurityCamerasData, useClass: SecurityCamerasService },
 ];
 
+const formSetting: any = {
+  redirectDelay: 0,
+  strategy: 'email',
+  rememberMe: false,
+  forgotPassword: false,
+  register: false,
+  showMessages: {
+    success: true,
+    error: true,
+  },
+  // terms: true,
+  // socialLinks: socialLinks,
+};
 export class NbSimpleRoleProvider extends NbRoleProvider {
   getRole() {
     // here you could provide any role based on any auth flow
@@ -103,20 +110,32 @@ export const NB_CORE_PROVIDERS = [
   ...MockDataModule.forRoot().providers,
   ...DATA_SERVICES,
   ...NbAuthModule.forRoot({
-
     strategies: [
-      NbDummyAuthStrategy.setup({
+      NbPasswordAuthStrategy.setup({
         name: 'email',
-        delay: 3000,
+        baseEndpoint: environment.apiHost,
+        token: {
+          class: NbAuthJWTToken,
+          key: 'token', // this parameter tells where to look for the token
+        },
+        login: {
+          // ...
+          endpoint: 'auth/token',
+          method: 'post',
+        },
+        // register: {
+        //   // ...
+        //   endpoint: '/users',
+        //   method: 'post',
+        // },
+        logout: {
+          endpoint: 'auth/logout',
+          method: 'post',
+        },
       }),
     ],
     forms: {
-      login: {
-        socialLinks: socialLinks,
-      },
-      register: {
-        socialLinks: socialLinks,
-      },
+      login: formSetting,
     },
   }).providers,
 
@@ -135,7 +154,8 @@ export const NB_CORE_PROVIDERS = [
   }).providers,
 
   {
-    provide: NbRoleProvider, useClass: NbSimpleRoleProvider,
+    provide: NbRoleProvider,
+    useClass: NbSimpleRoleProvider,
   },
   AnalyticsService,
   LayoutService,
@@ -144,12 +164,8 @@ export const NB_CORE_PROVIDERS = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-  ],
-  exports: [
-    NbAuthModule,
-  ],
+  imports: [CommonModule],
+  exports: [NbAuthModule],
   declarations: [],
 })
 export class CoreModule {
@@ -160,9 +176,7 @@ export class CoreModule {
   static forRoot(): ModuleWithProviders {
     return <ModuleWithProviders>{
       ngModule: CoreModule,
-      providers: [
-        ...NB_CORE_PROVIDERS,
-      ],
+      providers: [...NB_CORE_PROVIDERS],
     };
   }
 }
