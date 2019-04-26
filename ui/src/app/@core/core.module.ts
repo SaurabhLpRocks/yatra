@@ -45,6 +45,7 @@ import { UserService } from './mock/users.service';
 import { VisitorsAnalyticsService } from './mock/visitors-analytics.service';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { AnalyticsService, LayoutService, PlayerService, StateService } from './utils';
+import { AuthGuard } from './utils/auth-guard.service';
 
 const socialLinks = [
   {
@@ -120,7 +121,7 @@ export const NB_CORE_PROVIDERS = [
         },
         login: {
           // ...
-          endpoint: 'auth/token',
+          endpoint: 'Tokens/access',
           method: 'post',
         },
         // register: {
@@ -157,6 +158,7 @@ export const NB_CORE_PROVIDERS = [
     provide: NbRoleProvider,
     useClass: NbSimpleRoleProvider,
   },
+  AuthGuard,
   AnalyticsService,
   LayoutService,
   PlayerService,
