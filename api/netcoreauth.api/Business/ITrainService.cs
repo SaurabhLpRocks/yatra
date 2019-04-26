@@ -6,8 +6,9 @@ using netcoreauth.model;
 
 namespace netcoreauth.api.Business
 {
-    public interface ITrainService
-    {
-        List<Train> GetTrains(string from, string to);
-    }
+  public interface ITrainService
+  {
+    List<Train> GetTrains(string from, string to);
+    List<string> GetCities(string search);
+  }
 }

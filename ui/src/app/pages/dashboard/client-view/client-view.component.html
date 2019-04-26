@@ -1,4 +1,4 @@
-<p-table [columns]="cols" [value]="trainProbabilityDetails"  dataKey="train" rowExpandMode="single">
+<p-table [columns]="cols" [value]="trainProbabilityDetails"  dataKey="trainNumber" rowExpandMode="single">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th style="width: 3em"></th>
@@ -8,7 +8,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
-    <tr (click)="tableRowClick(rowData.train)">
+    <tr (click)="tableRowClick(rowData.trainNumber)">
       <td>
         <a href="#" [pRowToggler]="rowData">
           <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>

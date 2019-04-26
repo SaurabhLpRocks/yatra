@@ -1,7 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
 import { ClientViewService } from './client-view.service';
-
 @Component({
   selector: 'ngx-client-view',
   templateUrl: './client-view.component.html',
@@ -30,29 +30,24 @@ import { ClientViewService } from './client-view.service';
 export class ClientViewComponent implements OnInit {
   trainProbabilityDetails: any[];
   cols: any[];
-  trainPredictionClassCol : any[];
+  trainPredictionClassCol: any[];
   constructor(private clientViewService: ClientViewService) {}
 
   ngOnInit() {
+    this.clientViewService
+      .getTrainProbabilityData()
+      .pipe(first())
+      .subscribe(classDetails => {
+        this.trainProbabilityDetails = classDetails;
+        console.log('trainProbabilityDetails', this.trainProbabilityDetails);
+      });
 
-    this.clientViewService.getTrainProbabilityData().subscribe(classDetails => {
-      this.trainProbabilityDetails = classDetails;
-      console.log('trainProbabilityDetails', this.trainProbabilityDetails);
-    });
+    this.cols = [{ field: 'trainNumber', header: 'Train' }, { field: 'name', header: 'Name' }];
 
-    this.cols = [
-      { field: 'train', header: 'Train' },
-      { field: 'name', header: 'Name' },
-    ];
-
-    this.trainPredictionClassCol = [
-      { field: 'class', header: 'Class' },
-      { field: 'accuracy', header: 'Accuracy' },
-    ];
+    this.trainPredictionClassCol = [{ field: 'class', header: 'Class' }, { field: 'accuracy', header: 'Accuracy' }];
   }
 
-  tableRowClick(train){
-
-    console.log("Clicked", train);
+  tableRowClick(train) {
+    console.log('Clicked', train);
   }
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TtViewService } from './tt-view.service';
-// import {DropdownModule} from 'primeng/dropdown';
 
 @Component({
   selector: 'ngx-tt-view',
@@ -8,11 +7,6 @@ import { TtViewService } from './tt-view.service';
   styleUrls: ['./tt-view.component.scss'],
   providers: [TtViewService],
 })
-
-// interface City {
-//   name: string;
-//   code: string;
-// }
 export class TtViewComponent implements OnInit {
   selectedBogi: { name: string; code: string };
   bogiList: any[];
@@ -27,14 +21,18 @@ export class TtViewComponent implements OnInit {
       console.log('Bogi List ', bogiList);
     });
 
-    this.TtViewService.getPassengersList().subscribe(passengers => {
-      this.passengers = passengers;
-      console.log('Passengers List : ', this.passengers);
-    });
+    this.setPassengersList();
 
     this.TtViewService.getPassengersTableCol().subscribe(tableCol => {
       this.passengersTableCol = tableCol;
       console.log(this.passengersTableCol);
+    });
+  }
+
+  setPassengersList() {
+    this.TtViewService.getPassengersList().subscribe(passengers => {
+      this.passengers = passengers;
+      console.log('Passengers List : ', this.passengers);
     });
   }
 
@@ -46,6 +44,9 @@ export class TtViewComponent implements OnInit {
         this.passengers = passengers;
         console.log('bogiSelected : ', this.passengers);
       });
+    } else {
+      console.log('bogiSelected : ', this.passengers);
+      this.setPassengersList();
     }
   }
 

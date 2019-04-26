@@ -1,24 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of as observableOf } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from './../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ClientViewService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
   getTrainProbabilityData(): Observable<any[]> {
-    const trainsProbabilityDetails: any[] =   [
-      {
-        train : 12345,
-        name : "Gitanjali",
-        prediction : [{ class : "sleeper", accuracy : 20}, { class : "AC2", accuracy : 50}, { class : "AC3", accuracy : 100}]
-      },
-      {
-        train : 5678,
-        name : "ABC",
-        prediction : [{ class : "sleeper", accuracy : 10}, { class : "AC2", accuracy : 50}]
-      }
-    ]
-    return observableOf(trainsProbabilityDetails);
+    return this.http.get<any>(`${environment.apiHost}/Train`).pipe(
+      map(data => {
+        // login successful if there's a jwt token in the response
+        return data;
+      }),
+    );
   }
 }

@@ -41,7 +41,7 @@ namespace netcoreauth.model
                     if (tokens.Any())
                     {
                         string uQuery = "UPDATE token SET jwt_token = @JWT_Token"
-                                        + " WHERE id = @Id";
+                                        + " WHERE id = @TrainNumber";
                         dbConnection.Execute(uQuery, new { Id = tokens.Single().Id, JWT_Token = jwttoken });
                     }
                     else
