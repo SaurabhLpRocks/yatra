@@ -1,4 +1,25 @@
 {
-    "typescript.tsdk": "./node_modules/typescript/lib",
-    "tslint.enable": false
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.tslintIntegration": true,
+  "javascript.preferences.quoteStyle": "single",
+  "prettier.printWidth": 140,
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "npm.enableScriptExplorer": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "editor.formatOnPaste": false,
+  "docthis.includeDateTag": true,
+  "editor.codeActionsOnSaveTimeout": 750,
+  "editor.formatOnSaveTimeout": 750,
+  "cSpell.words": ["SAURABH"]
 }
