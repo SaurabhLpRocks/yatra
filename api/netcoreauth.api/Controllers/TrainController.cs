@@ -9,21 +9,28 @@ using netcoreauth.model;
 
 namespace netcoreauth.api.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+  [Route("api/[controller]")]
+  [ApiController]
   public class TrainController : ControllerBase
+  {
+    private readonly ITrainService _iTrainService;
+    public TrainController(ITrainService iTrainService)
     {
-        private readonly ITrainService _iTrainService;
-        public TrainController(ITrainService iTrainService)
-        {
-            _iTrainService = iTrainService;
-        }
-
-        [HttpGet]
-        public IActionResult Get(string from, string to)
-        {
-            var data = _iTrainService.GetTrains(from, to);
-            return Ok(data);
-        }
+      _iTrainService = iTrainService;
     }
+
+    [HttpGet]
+    public IActionResult Get(string from, string to)
+    {
+      var data = _iTrainService.GetTrains(from, to);
+      return Ok(data);
+    }
+
+    [HttpGet("GetCities")]
+    public IActionResult GetCities(string search)
+    {
+      var data = _iTrainService.GetCities(search);
+      return Ok(data);
+    }
+  }
 }

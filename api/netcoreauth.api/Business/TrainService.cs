@@ -7,17 +7,22 @@ using netcoreauth.model;
 
 namespace netcoreauth.api.Business
 {
-    public class TrainService : ITrainService
+  public class TrainService : ITrainService
+  {
+    private readonly ITrainRepository _iTrainRepository;
+    public TrainService(ITrainRepository iTrainRepository)
     {
-        private readonly ITrainRepository _iTrainRepository;
-        public TrainService(ITrainRepository iTrainRepository)
-        {
-            _iTrainRepository = iTrainRepository;
-        }
-
-        public List<Train> GetTrains(string from, string to)
-        {
-            return _iTrainRepository.GetTrains(from, to);
-        }
+      _iTrainRepository = iTrainRepository;
     }
+
+    public List<string> GetCities(string search)
+    {
+      return _iTrainRepository.GetCities(search);
+    }
+
+    public List<Train> GetTrains(string from, string to)
+    {
+      return _iTrainRepository.GetTrains(from, to);
+    }
+  }
 }
