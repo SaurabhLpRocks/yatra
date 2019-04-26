@@ -15,7 +15,7 @@ namespace netcoreauth.api.Business
       _iTrainRepository = iTrainRepository;
     }
 
-    public List<string> GetCities(string search)
+    public List<DropDownModel> GetCities(string search)
     {
       return _iTrainRepository.GetCities(search);
     }

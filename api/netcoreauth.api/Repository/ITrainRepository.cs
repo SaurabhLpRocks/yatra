@@ -9,6 +9,6 @@ namespace netcoreauth.api.Repository
     public interface ITrainRepository
     {
         List<Train> GetTrains(string from, string to);
-    List<string> GetCities(string search);
+     List<DropDownModel> GetCities(string search);
     }
 }

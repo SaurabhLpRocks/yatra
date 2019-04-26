@@ -10,9 +10,17 @@ using Newtonsoft.Json;
 
 namespace netcoreauth.api.Repository
 {
+
+  public class DropDownModel
+  {
+    public string Name { get; set; }
+    public string Code { get; set; }
+    public int Id { get; set; }
+  }
+
   public class TrainRepository : ITrainRepository
   {
-    public List<string> GetCities(string search)
+    public List<DropDownModel>  GetCities(string search)
     {
       var list = TrainDataStore.TrainList;
       List<string> from = list.Select(x => x.From).Distinct().ToList();
@@ -26,14 +34,29 @@ namespace netcoreauth.api.Repository
       {
         inbetween.Add(item);
       }
+      
       if (string.IsNullOrEmpty(search))
       {
-        return inbetween.Select(x => x).Distinct().ToList();
+        return ReturnListInDropDownModel(inbetween.Select(x => x).Distinct().ToList());
       }
       else
       {
-        return inbetween.Where(x => x.ToLower().StartsWith(search.ToLower())).Distinct().ToList();
+        return ReturnListInDropDownModel(inbetween.Where(x => x.ToLower().StartsWith(search.ToLower())).Distinct().ToList());
       }
+    }
+
+    public List<DropDownModel> ReturnListInDropDownModel(List<string> inbetween)
+    {
+      List<DropDownModel> dropDownList = new List<DropDownModel>();
+
+      dropDownList.Add(new DropDownModel { Name = "Select Station", Code = null});
+
+      int count = 1;
+      foreach (string station in inbetween)
+      {
+        dropDownList.Add(new DropDownModel { Name = station, Code = Convert.ToString(count++) });
+      }
+      return dropDownList;
     }
 
     public List<Train> GetTrains(string from, string to)
