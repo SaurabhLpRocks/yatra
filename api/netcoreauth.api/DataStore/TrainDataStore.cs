@@ -10,16 +10,18 @@ namespace netcoreauth.api.DataStore
   {
     public static List<Train> TrainList = new List<Train>()
         {
-            new Train { Id = 12345, TrainName = "Gitanjali", From = "Nagpur", To= "Pune", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 20 }, new Prediction { Class = "ac3", Accuracy = 50 } } },
-            new Train { Id = 5678, TrainName = "Sampakranti Express", From = "Nagpur", To= "Mumbai", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 10 }, new Prediction { Class = "ac3", Accuracy = 90 } } },
-            new Train { Id = 22692, TrainName = "Bangalore Rajdhani", From = "Mumbai", To= "Bangalore", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 20 }, new Prediction { Class = "ac3", Accuracy = 60 } } },
-            new Train { Id = 12622, TrainName = "TamilNadu Express", From = "Hyderabad", To= "Bangalore", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 24 }, new Prediction { Class = "ac3", Accuracy = 20 } } },
-            new Train { Id = 12722, TrainName = "Dakshin Express", From = "Hyderabad", To= "Pune", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 10 }, new Prediction { Class = "ac3", Accuracy = 40 } } },
-            new Train { Id = 22416, TrainName = "A P Express", From = "Pune", To= "Nagpur", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 60 }, new Prediction { Class = "ac3", Accuracy = 80 } } },
-            new Train { Id = 12808, TrainName = "Samata Express", From = "Nagpur", To= "Hyderabad",  Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 30 }, new Prediction { Class = "ac3", Accuracy = 30 } } },
-            new Train { Id = 12626, TrainName = "Kerala Express", From = "Nagpur", To= "Hyderabad", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 80 }, new Prediction { Class = "ac3", Accuracy = 50 } } },
-            new Train { Id = 12434, TrainName = "Chennai Rajdhani", From = "Nagpur", To= "Pune", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 100 }, new Prediction { Class = "ac3", Accuracy = 10 } } },
-            new Train { Id = 12406, TrainName = "Gondwana Express", From = "Hyderabad", To= "Nagpur", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 50 }, new Prediction { Class = "ac3", Accuracy = 70 } } }
-        };
+
+            new Train { TrainNumber = 12345, Name = "Gitanjali", From = "Nagpur", To= "Pune", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 20 }, new Prediction { Class = "Ac3", Accuracy = 50 } } },
+            new Train { TrainNumber = 5678 , Name = "Sampakranti Express", From = "Nagpur", To= "Mumbai", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 10 }, new Prediction { Class = "Ac3", Accuracy = 90 } } },
+            new Train { TrainNumber = 22692, Name = "Bangalore Rajdhani", From = "Mumbai", To= "Bangalore", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 20 }, new Prediction { Class = "Ac3", Accuracy = 60 } } },
+            new Train { TrainNumber = 12622, Name = "TamilNadu Express", From = "Hyderabad", To= "Bangalore", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 24 }, new Prediction { Class = "Ac3", Accuracy = 20 } } },
+            new Train { TrainNumber = 12722, Name = "Dakshin Express", From = "Hyderabad", To= "Pune", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 10 }, new Prediction { Class = "Ac3", Accuracy = 40 } } },
+            new Train { TrainNumber = 22416, Name = "A P Express", From = "Pune", To= "Nagpur", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 60 }, new Prediction { Class = "Ac3", Accuracy = 80 } } },
+            new Train { TrainNumber = 12808, Name = "Samata Express", From = "Nagpur", To= "Hyderabad",  Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 30 }, new Prediction { Class = "Ac3", Accuracy = 30 } } },
+            new Train { TrainNumber = 12626, Name = "Kerala Express", From = "Nagpur", To= "Hyderabad", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 80 }, new Prediction { Class = "Ac3", Accuracy = 50 } } },
+            new Train { TrainNumber = 12434, Name = "Chennai Rajdhani", From = "Nagpur", To= "Pune", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 100 }, new Prediction { Class = "Ac3", Accuracy = 10 } } },
+            new Train { TrainNumber = 12406, Name = "Gondwana Express", From = "Hyderabad", To= "Nagpur", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 50 }, new Prediction { Class = "Ac3", Accuracy = 70 } } }
+
+   };
   }
 }

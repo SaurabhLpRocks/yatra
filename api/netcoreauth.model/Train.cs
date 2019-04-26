@@ -8,8 +8,8 @@ namespace netcoreauth.model
     public class Train
     {
         [Key]
-        public int Id { get; set; }
-        public string TrainName { get; set; }
+        public int TrainNumber { get; set; }
+        public string Name { get; set; }
         public string From { get; set; }
         public string To { get; set; }
         public List<Prediction> Prediction { get; set; }

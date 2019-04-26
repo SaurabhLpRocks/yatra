@@ -21,5 +21,8 @@
   "docthis.includeDateTag": true,
   "editor.codeActionsOnSaveTimeout": 750,
   "editor.formatOnSaveTimeout": 750,
-  "cSpell.words": ["SAURABH"]
+  "cSpell.words": [
+    "SAURABH"
+  ],
+  "git.ignoreLimitWarning": true
 }
