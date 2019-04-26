@@ -1,0 +1,29 @@
+{
+  "name": "ngx-admin",
+  "version": "3.2.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akveo/ngx-admin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/akveo/ngx-admin/issues"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "IE 11"
+  ],
+  "scripts": {
+    "serve-app-development-docker": "npm i && concurrently \"docker-compose -f ui/docker-compose.yml up --build -d\" \"docker-compose -f api/docker-compose.yml up --build -d\"",
+    "build-production-docker": "npm i && concurrently \"docker-compose -f ui/docker-compose.yml build\" \"docker-compose -f api/docker-compose.yml build\"",
+    "build-production-api-docker": "docker-compose -f ui/docker-compose.yml build",
+    "serve-production-api-docker": "docker-compose -f ui/docker-compose.yml build up --build -d",
+    "build-production-ui-docker": "docker-compose -f ui/docker-compose.yml build",
+    "serve-production-ui-docker": "docker-compose -f ui/docker-compose.yml build up --build -d"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  }
+}

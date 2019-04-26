@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  yatra-ui-docker-service:
+    container_name: yatra-ui-prod-container
+    image: yatra-ui-prod-image
+    build:
+      context: .
+      dockerfile: dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 80:80
+    ## set your startup file here
+    command: [nginx, '-g', 'daemon off;']

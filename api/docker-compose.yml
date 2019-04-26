@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  yatra.api:
+    image: yatra.api.prod.image
+    container_name: yatra.api.prod.container
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - 4999:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production

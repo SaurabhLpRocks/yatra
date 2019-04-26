@@ -257,7 +257,7 @@ _Pvt_Extensions
 
 # compiled output
 /dist
-/CentralizedConfiguration.UI/dist
+/ui/dist
 /tmp
 /out-tsc
 

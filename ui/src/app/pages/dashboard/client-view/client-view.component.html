@@ -1,46 +1,75 @@
-<p-table [columns]="cols" [value]="trainProbabilityDetails"  dataKey="trainNumber" rowExpandMode="single">
-  <ng-template pTemplate="header" let-columns>
-    <tr>
-      <th style="width: 3em"></th>
-      <th *ngFor="let col of columns">
-        {{ col.header }}
-      </th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
-    <tr (click)="tableRowClick(rowData.trainNumber)">
-      <td>
-        <a href="#" [pRowToggler]="rowData">
-          <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
-        </a>
-      </td>
-      <td *ngFor="let col of columns">
-        {{ rowData[col.field] }}
-      </td>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
-    <tr >
-      <td [attr.colspan]="columns.length + 1">
-        <div class="ui-g ui-fluid" style="font-size:16px;padding:5px 150px">
-          <div class="ui-g-12 ui-md-9">
-            <div class="ui-g">
+<div style="padding: 20px">
+  <div style="float: left;">
+    From
+    <div>
+      <p-dropdown [options]="stations" [(ngModel)]="selectedStartPoint" optionLabel="name"></p-dropdown>
+      <div *ngIf="showStartStationError">
+        Please Select Station
+      </div>
+    </div>
+  </div>
+
+  <div style="float: left;">
+    To
+    <div>
+      <p-dropdown [options]="stations" [(ngModel)]="selectedEndPoint" optionLabel="name"></p-dropdown>
+      <div *ngIf="showEndStationError">
+        Please Select Station
+      </div>
+    </div>
+  </div>
+  <div style="float: left;">
+    <button pButton type="button" label="Click" (click)="handleClick($event)">Submit</button>
+    <div *ngIf="bothStationSameError">
+      Please select different stations
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 50px;" *ngIf="isDataPresent">
+  <p-table [columns]="cols" [value]="trainProbabilityDetails" dataKey="trainNumber" rowExpandMode="single">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th style="width: 3em"></th>
+        <th *ngFor="let col of columns">
+          {{ col.header }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+      <tr (click)="tableRowClick(rowData.trainNumber)">
+        <td>
+          <a href="#" [pRowToggler]="rowData">
+            <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+          </a>
+        </td>
+        <td *ngFor="let col of columns">
+          {{ rowData[col.field] }}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+      <tr>
+        <td [attr.colspan]="columns.length + 1">
+          <div class="ui-g ui-fluid" style="font-size:16px;padding:5px 150px">
+            <div class="ui-g-12 ui-md-9">
+              <div class="ui-g">
                 <table class="table">
-                      <th *ngFor="let predictionClassCol of trainPredictionClassCol">
-                        {{ predictionClassCol.header }}
-                      </th>
-                    
-                        <tr *ngFor="let prediction of rowData.prediction">
-                            <td *ngFor="let predictionClassCol of trainPredictionClassCol">
-                                {{ prediction[predictionClassCol.field]}}
-                            </td>                        
-                        </tr>
+                  <th *ngFor="let predictionClassCol of trainPredictionClassCol">
+                    {{ predictionClassCol.header }}
+                  </th>
+
+                  <tr *ngFor="let prediction of rowData.prediction">
+                    <td *ngFor="let predictionClassCol of trainPredictionClassCol">
+                      {{ prediction[predictionClassCol.field] }}
+                    </td>
+                  </tr>
                 </table>
-              
+              </div>
             </div>
           </div>
-        </div>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

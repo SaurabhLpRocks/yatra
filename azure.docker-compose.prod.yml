@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  yatra-ui:
+    image: saurabhpalatkar/yatra-ui
+    environment:
+      NODE_ENV: production
+    ports:
+      - 80:80
+    command: [nginx, '-g', 'daemon off;']
+  yatra-api:
+    image: saurabhpalatkar/yatra-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - 4999:80
