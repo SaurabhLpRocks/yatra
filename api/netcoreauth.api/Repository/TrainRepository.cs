@@ -1,32 +1,45 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting.Server;
+using netcoreauth.api.DataStore;
 using netcoreauth.model;
 using Newtonsoft.Json;
 
 namespace netcoreauth.api.Repository
 {
-    public class TrainRepository : ITrainRepository
+  public class TrainRepository : ITrainRepository
+  {
+    public List<Train> GetTrains(string from, string to)
     {
-        public List<Train> TrainList = new List<Train>();        
-
-        public List<Train> LoadJson()
+      if (string.IsNullOrEmpty(from))
+      {
+        if (string.IsNullOrEmpty(to))
         {
-            using (StreamReader r = new StreamReader("~/DataStore/TrainList.json"))
-            {
-                string json = r.ReadToEnd();
-                TrainList = JsonConvert.DeserializeObject<List<Train>>(json);
-            }
-            return TrainList;
+          return TrainDataStore.TrainList;
         }
-
-        public List<Train> GetTrains()
+        else
         {
-            return this.LoadJson();
+          var list = TrainDataStore.TrainList;
+          return list.Where(x => x.To.ToLower().Equals(to.ToLower())).ToList();
         }
+      }
+      else
+      {
+        if (string.IsNullOrEmpty(to))
+        {
+          var list = TrainDataStore.TrainList;
+          return list.Where(x => x.From.ToLower().Equals(from.ToLower())).ToList();
+        }
+        else
+        {
+          var list = TrainDataStore.TrainList;
+          return list.Where(x => x.From.ToLower().Equals(from.ToLower()) && x.To.ToLower().Equals(to.ToLower())).ToList();
+        }
+      }
+      return null;
     }
-    
+  }
 }

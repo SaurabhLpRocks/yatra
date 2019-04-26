@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,9 +15,9 @@ namespace netcoreauth.api.Business
             _iTrainRepository = iTrainRepository;
         }
 
-        public List<Train> GetTrains()
+        public List<Train> GetTrains(string from, string to)
         {
-            return _iTrainRepository.GetTrains();
+            return _iTrainRepository.GetTrains(from, to);
         }
     }
 }
