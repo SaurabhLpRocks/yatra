@@ -6,7 +6,7 @@
 from flask import Flask, jsonify  # From module flask import class Flask
 
 import tensorflow
-from TrainedModel import predict
+# from TrainedModel import predict
 
 app = Flask(__name__)    # Construct an instance of Flask class for our webapp
 
