@@ -14,5 +14,9 @@ namespace netcoreauth.api.Business
     List<DropDownModel> GetCities();
     List<PassengerModel> GetPassengers(int trainNumber, int bogiId);
 
+    bool UpdatePassengerPresentStatus(PassengerModel data);
+
+    PassengerModel ReplacePassenger(ReplacePassengerModel rModel);
+
   }
 }

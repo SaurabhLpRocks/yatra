@@ -7,11 +7,11 @@ import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnDestroy {
-  user = {};
+  user: any = {};
   constructor(private authService: NbAuthService) {
     this.authService.onTokenChange().subscribe((token: NbAuthJWTToken) => {
       if (token.isValid()) {
-        this.user = token.getPayload();
+        this.user = token.getPayload().user;
         console.log('this.user', this.user);
       }
     });

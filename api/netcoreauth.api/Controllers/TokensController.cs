@@ -35,6 +35,7 @@ namespace netcoreauth.api.Controllers
       var getUser = userRepository.GetByEmailAndPassword(user.Email, user.Password);
       if (getUser != null)
       {
+        user.Role = getUser.Role;
         if (getUser.Is_Activated == true)
         {
           result = new

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -71,7 +71,7 @@ namespace netcoreauth.api
               null,
               expires: DateTime.Now.AddMinutes(120),
               signingCredentials: credentials);
-
+      token.Payload["user"] = user;
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 

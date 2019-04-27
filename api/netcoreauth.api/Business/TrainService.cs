@@ -30,5 +30,17 @@ namespace netcoreauth.api.Business
     public List<PassengerModel> GetPassengers(int trainNumber, int bogiId) {
       return _iTrainRepository.GetPassengers(trainNumber, bogiId);
     }
+
+    public bool UpdatePassengerPresentStatus(PassengerModel data)
+    {
+
+      return _iTrainRepository.UpdatePassengerPresentStatus(data); ;
+    }
+
+    public PassengerModel ReplacePassenger(ReplacePassengerModel data)
+    {
+      return _iTrainRepository.ReplacePassenger(data); ;
+    }
+
   }
 }

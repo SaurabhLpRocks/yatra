@@ -1,10 +1,11 @@
-<nb-card>
+<nb-card style="min-height: 500px">
   <nb-card-body>
     <div class="row">
       <div class="col-sm-12">
-        <ngx-tt-view></ngx-tt-view>
-        <ngx-client-view></ngx-client-view>
-
+        <ngx-tt-view *ngIf="user.Role === 'admin'; else userview"></ngx-tt-view>
+        <ng-template #userview>
+          <ngx-client-view></ngx-client-view>
+        </ng-template>
       </div>
     </div>
   </nb-card-body>

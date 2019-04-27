@@ -47,10 +47,6 @@ output_layer = {'f_fum':None,
                 'bias':tf.Variable(param['output_layer']['bias'])}
 
 
-# In[21]:
-
-
-# Nothing changes
 def neural_network_model(data):
 
     l1 = tf.add(tf.matmul(data,hidden_1_layer['weight']), hidden_1_layer['bias'])
@@ -71,14 +67,18 @@ def neural_network_model(data):
     return op
 
 
-# In[22]:
+def checkSeatAllocated(vacant, allocated):
+    if (vacant < allocated):
+        return vacant
+    else:
+        return allocated
 
 
 def predict(trainType, isHoliday, seatsVacant, delay, arrival):
-    return neural_network_model([[trainType, isHoliday, seatsVacant, delay, arrival]])
-
-
-# In[ ]:
+    result =  neural_network_model([[trainType, isHoliday, seatsVacant, delay, arrival]])
+    seatAllocated = checkSeatAllocated(seatsVacant, int(result[0][0]))
+    genuineUser = int(result[0][1])
+    return {'seatsAllocated': seatAllocated * 100, 'genuineUser': genuineUser}
 
 
 

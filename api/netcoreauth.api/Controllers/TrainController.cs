@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using netcoreauth.api.Business;
+using netcoreauth.api.DataStore;
 using netcoreauth.model;
 
 namespace netcoreauth.api.Controllers
@@ -39,6 +40,23 @@ namespace netcoreauth.api.Controllers
     {
       var data = _iTrainService.GetPassengers(trainNumber, bogiId);
       return Ok(data);
-    }   
+    }
+
+    [HttpPost("PostPassenger")]
+    public IActionResult PostPassenger([FromBody]PassengerModel data)
+    {
+      _iTrainService.UpdatePassengerPresentStatus(data);
+      return Ok(data);
+    }
+
+
+    [HttpPost("ReplacePassenger")]
+    public IActionResult ReplacePassenger([FromBody]ReplacePassengerModel data)
+    {
+      PassengerModel newData = _iTrainService.ReplacePassenger(data);
+      return Ok(newData);
+    }
   }
+
+  
 }

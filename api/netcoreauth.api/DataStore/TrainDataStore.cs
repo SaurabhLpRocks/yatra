@@ -158,5 +158,13 @@ namespace netcoreauth.api.DataStore
     public int Seat { get; set; }
     public string Name { get; set; }
     public bool IsPresent { get; set; }
+    public bool? IsReplaced { get; set; }
+  }
+
+  public class ReplacePassengerModel
+  {
+    public PassengerModel PassengerModel { get; set; }
+    public string NewPassengerName { get; set; }
+
   }
 }
