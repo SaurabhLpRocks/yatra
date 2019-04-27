@@ -12,7 +12,9 @@ export class TtViewComponent implements OnInit {
   bogiList: any[];
   passengers: any[];
   passengersTableCol: any[];
-  selectedTrain: number = 1234;
+  selectedTrain: number = 12345;
+
+  selectedBogiId: 0;
   constructor(private TtViewService: TtViewService) {}
 
   ngOnInit() {
@@ -21,16 +23,24 @@ export class TtViewComponent implements OnInit {
       console.log('Bogi List ', bogiList);
     });
 
-    this.setPassengersList();
+    this.setPassengersList(this.selectedTrain, this.selectedBogiId);
 
+    this.setPassengersTableCol();
+  }
+
+  setPassengersTableCol() {
     this.TtViewService.getPassengersTableCol().subscribe(tableCol => {
       this.passengersTableCol = tableCol;
+
+      // if(!this.selectedBogi || !this.selectedBogi.code){
+      //   this.passengersTableCol.splice(0,0, this.TtViewService.getCoachField());
+      // }
+
       console.log(this.passengersTableCol);
     });
   }
-
-  setPassengersList() {
-    this.TtViewService.getPassengersList().subscribe(passengers => {
+  setPassengersList(selectedTrain, selectedBogi) {
+    this.TtViewService.getPassengersList(selectedTrain, selectedBogi).subscribe(passengers => {
       this.passengers = passengers;
       console.log('Passengers List : ', this.passengers);
     });
@@ -39,15 +49,19 @@ export class TtViewComponent implements OnInit {
   bogiSelected(value) {
     console.log('DD chanege  ', value);
 
-    if (value && value.id) {
-      this.TtViewService.getPassengersListByBogi(value.id).subscribe(passengers => {
-        this.passengers = passengers;
-        console.log('bogiSelected : ', this.passengers);
-      });
-    } else {
-      console.log('bogiSelected : ', this.passengers);
-      this.setPassengersList();
-    }
+    this.selectedBogiId = value.id;
+
+    this.setPassengersList(this.selectedTrain, value.id);
+
+    // if (value && value.id) {
+    //   this.TtViewService.getPassengersListByBogi(this.selectedTrain, value.id).subscribe(passengers => {
+    //     this.passengers = passengers;
+    //     console.log('bogiSelected : ', this.passengers);
+    //   });
+    // } else {
+    //   console.log('bogiSelected : ', this.passengers);
+    //   this.setPassengersList(this.selectedTrain, value.id);
+    // }
   }
 
   togglePassengerPresence(e, row) {

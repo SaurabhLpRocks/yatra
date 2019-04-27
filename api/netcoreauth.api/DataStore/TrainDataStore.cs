@@ -21,5 +21,43 @@ namespace netcoreauth.api.DataStore
             new Train { TrainNumber = 12434, Name = "Chennai Rajdhani", From = "Pune", Depart = "12:00", InBetweenStations = new List<string>{ "Gulbarga", "Yadir", "Raichur", "Razampetha", "Perambur" },  InBetweenStationsTime = new List<string>{ "12:30", "12:45", "13:00", "13:15",  "13:30" },  To= "Chennai", TotalHrs = "02:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 100 }, new Prediction { Class = "ac3", Accuracy = 10 } } },
             new Train { TrainNumber = 12406, Name = "Gondwana Express", From = "Nagpur", Depart = "12:00", InBetweenStations = new List<string>{ "Ajni", "Wardha", "Shegaon", "Bhusawal", "Kopargaon", "Daund" },  InBetweenStationsTime = new List<string>{ "12:30", "12:45", "13:00", "13:15",  "13:30", "13:45" }, To= "Pune", TotalHrs = "02:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 50 }, new Prediction { Class = "ac3", Accuracy = 70 } } }
         };
-  }
+
+
+    public static List<BogiModel> BogiList = new List<BogiModel>() {
+      new BogiModel{ Id = 1, Bogi="S3", TrainNumber = 12345},
+      new BogiModel{ Id = 2, Bogi="S4", TrainNumber = 12345},
+      new BogiModel{ Id = 3, Bogi="S3", TrainNumber = 5678},
+      new BogiModel{ Id = 4, Bogi="S3", TrainNumber = 5678}
+    };
+
+
+    public static List<PassengerModel> Passengers = new List<PassengerModel>()
+    {
+      new PassengerModel { Id = 1, TrainNumber = 12345, Bogi="S3", BogiId = 1, Seat=1 , Name = "Sagar Charde", IsPresent=true},
+      new PassengerModel { Id = 2, TrainNumber = 12345, Bogi="S3", BogiId = 1, Seat=2 , Name = "Ram Pyare", IsPresent=true},
+      new PassengerModel { Id = 3, TrainNumber = 12345, Bogi="S3", BogiId = 1, Seat=3 , Name = "Rahul Warma", IsPresent=true},
+      new PassengerModel { Id = 4, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=1 , Name = "Vaibhav Bharuka", IsPresent=true},
+      new PassengerModel { Id = 5, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=2 , Name = "Sourabh Palatkar", IsPresent=true},
+      new PassengerModel { Id = 6, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=3 , Name = "Swapnil", IsPresent=true},
+      new PassengerModel { Id = 7, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=4 , Name = "Chetan", IsPresent=true},
+    };
+}
+
+public class BogiModel
+{
+  public int Id { get; set; }
+  public int TrainNumber { get; set; }
+  public string Bogi { get; set; }
+}
+
+public class PassengerModel
+{
+  public int Id { get; set; }
+  public int TrainNumber { get; set; }
+  public string Bogi { get; set; }
+  public int BogiId { get; set; }
+  public int Seat { get; set; }
+  public string Name { get; set; }
+  public bool IsPresent { get; set; }
+}
 }

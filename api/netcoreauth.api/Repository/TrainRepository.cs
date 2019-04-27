@@ -88,5 +88,20 @@ namespace netcoreauth.api.Repository
       }
       return null;
     }
+
+    public List<PassengerModel> GetPassengers(int trainNumber, int bogiId)
+    {
+      List<PassengerModel> passengers = TrainDataStore.Passengers;
+      List<PassengerModel> sortedPassengers = new List<PassengerModel>();
+      if (bogiId == 0)
+      {
+        sortedPassengers = passengers.Where(x => x.TrainNumber == trainNumber).ToList();
+      }
+      else
+      {
+        sortedPassengers = passengers.Where(x => x.TrainNumber == trainNumber && x.BogiId == bogiId).ToList();
+      }
+      return sortedPassengers;
+    }
   }
 }
