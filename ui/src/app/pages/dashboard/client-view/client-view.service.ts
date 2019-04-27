@@ -27,4 +27,13 @@ export class ClientViewService {
       }),
     );
   }
+
+  sendUserTrainSelectionStatus(trainNumber, userName): Observable<any[]> {
+    return this.http.post<any>(`${environment.apiHost}/Train/SendUserTrainSelectedTrack`, { train: trainNumber, userName: 'user' }).pipe(
+      map(data => {
+        // login successful if there's a jwt token in the response
+        return data;
+      }),
+    );
+  }
 }

@@ -56,7 +56,19 @@ namespace netcoreauth.api.Controllers
       PassengerModel newData = _iTrainService.ReplacePassenger(data);
       return Ok(newData);
     }
+
+    [HttpPost("SendUserTrainSelectedTrack")]
+    public IActionResult SendUserTrainSelectedTrack([FromBody]USerTrainTrack data)
+    {
+      return Ok(data);
+    }
   }
 
-  
+
+  public class USerTrainTrack
+  {
+    public int Train { get; set; }
+    public string UserName { get; set; }
+  }
+
 }
