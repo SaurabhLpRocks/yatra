@@ -66,7 +66,8 @@ export class ClientViewComponent implements OnInit {
   }
 
   tableRowClick(train) {
-    console.log('Clicked', train);
+    this.clientViewService.sendUserTrainSelectionStatus(train, 'User').subscribe(x => {});
+    // console.log('Clicked', train);
   }
 
   handleClick(event) {
