@@ -12,5 +12,10 @@ namespace netcoreauth.api.Repository
     List<Train> GetTrains(string from, string to);
     List<DropDownModel> GetCities();
     List<PassengerModel> GetPassengers(int trainNumber, int bogiId);
+
+    bool UpdatePassengerPresentStatus(PassengerModel data);
+
+    PassengerModel ReplacePassenger(ReplacePassengerModel rModel);
+
   }
 }
