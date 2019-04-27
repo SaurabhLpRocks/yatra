@@ -1,27 +1,32 @@
 <div style="padding: 20px">
-  <div style="float: left;">
-    From
-    <div>
-      <p-dropdown [options]="stations" [(ngModel)]="selectedStartPoint" optionLabel="name"></p-dropdown>
-      <div *ngIf="showStartStationError">
-        Please Select Station
+  <div class="row">
+    <div class="col-lg-2">
+      From
+      <div>
+        <p-dropdown [options]="stations" [(ngModel)]="selectedStartPoint" optionLabel="name"></p-dropdown>
+        <div *ngIf="showStartStationError">
+          Please Select Station
+        </div>
       </div>
     </div>
-  </div>
-
-  <div style="float: left;">
-    To
-    <div>
-      <p-dropdown [options]="stations" [(ngModel)]="selectedEndPoint" optionLabel="name"></p-dropdown>
-      <div *ngIf="showEndStationError">
-        Please Select Station
+    <div class="col-lg-2">
+      <div>
+        To
+        <div>
+          <p-dropdown [options]="stations" [(ngModel)]="selectedEndPoint" optionLabel="name"></p-dropdown>
+          <div *ngIf="showEndStationError">
+            Please Select Station
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div style="float: left;">
-    <button pButton type="button" label="Click" (click)="handleClick($event)">Submit</button>
-    <div *ngIf="bothStationSameError">
-      Please select different stations
+    <div class="col-lg-2">
+      <div class="pull-left">
+        <button pButton type="button" class="btn btn-primary btn-md" label="Click" (click)="handleClick($event)">Submit</button>
+        <div *ngIf="bothStationSameError">
+          Please select different stations
+        </div>
+      </div>
     </div>
   </div>
 </div>

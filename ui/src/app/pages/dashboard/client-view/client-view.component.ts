@@ -55,7 +55,7 @@ export class ClientViewComponent implements OnInit {
 
     this.cols = [{ field: 'trainNumber', header: 'Train' }, { field: 'name', header: 'Name' }];
 
-    this.trainPredictionClassCol = [{ field: 'class', header: 'Class' }, { field: 'accuracy', header: 'Accuracy' }];
+    this.trainPredictionClassCol = [{ field: 'class', header: 'Class' }, { field: 'accuracy', header: 'Probability (%)' }];
 
     this.clientViewService
       .getStationsList()

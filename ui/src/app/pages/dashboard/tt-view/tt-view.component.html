@@ -1,4 +1,5 @@
 <p>
+  <b class="col-sm-3">Train : {{ selectedTrain }} </b>
   <b>Select Coach : </b>
   <p-dropdown (onChange)="bogiSelected($event.value)" [options]="bogiList" [(ngModel)]="selectedBogi" optionLabel="name"></p-dropdown>
 </p>
