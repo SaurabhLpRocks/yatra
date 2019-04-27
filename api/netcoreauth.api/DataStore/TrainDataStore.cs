@@ -27,8 +27,8 @@ namespace netcoreauth.api.DataStore
                         new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 15, DepartMin = 00, Accuracy= 25 }
                   }, To= "Kolkata", TotalHrs = "12:00",
                     Prediction = new List<Prediction>()
-                        { new Prediction { Class = "sleeper", Accuracy = 20 },
-                          new Prediction { Class = "ac3", Accuracy = 50 } }
+                        { new Prediction { Class = "Sleeper", Accuracy = 20 },
+                          new Prediction { Class = "AC3", Accuracy = 50 } }
             },
 
             new Train { TrainNumber = 12101, Name = "Jnaneswari Delx", TrainType = 0.6, From = "Mumbai",DepartHrs = 20,
@@ -39,7 +39,7 @@ namespace netcoreauth.api.DataStore
                         new Station { Id = 4, Name = "Nagpur", DepartHrs = 06, DepartMin = 00, Accuracy = 30  },
                         new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 07, DepartMin = 00, Accuracy = 4  },
                         new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 08, DepartMin = 00, Accuracy = 5  }
-                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 10 }, new Prediction { Class = "ac3", Accuracy = 90 } } },
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "Sleeper", Accuracy = 10 }, new Prediction { Class = "AC3", Accuracy = 90 } } },
 
             new Train { TrainNumber = 12869, Name = "Howrah Superfast", TrainType = 0.6, From = "Mumbai", DepartHrs = 18,
                       DepartMin = 59, InBetweenStations = new List<Station>()
@@ -49,7 +49,7 @@ namespace netcoreauth.api.DataStore
                         new Station { Id = 4, Name = "Nagpur", DepartHrs = 23, DepartMin = 00, Accuracy = 23 },
                         new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 24, DepartMin = 00, Accuracy = 22 },
                         new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 25, DepartMin = 00, Accuracy = 33 }
-                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 20 }, new Prediction { Class = "ac3", Accuracy = 60 } } },
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "Sleeper", Accuracy = 20 }, new Prediction { Class = "AC3", Accuracy = 60 } } },
 
       new Train { TrainNumber = 12809, Name = "Howrah Mail", TrainType = 0.6, From = "Mumbai", DepartHrs = 19,
                       DepartMin = 59, InBetweenStations = new List<Station>()
@@ -59,7 +59,7 @@ namespace netcoreauth.api.DataStore
                         new Station { Id = 4, Name = "Nagpur", DepartHrs = 02, DepartMin = 00, Accuracy = 9 },
                         new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 03, DepartMin = 00, Accuracy = 14 },
                         new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 04, DepartMin = 00, Accuracy = 11 }
-                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 24 }, new Prediction { Class = "ac3", Accuracy = 20 } } },
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "Sleeper", Accuracy = 24 }, new Prediction { Class = "AC3", Accuracy = 20 } } },
 
       new Train { TrainNumber = 15611, Name = "Karmabhoomi", TrainType = 0.6, From = "Mumbai", DepartHrs = 19,
                       DepartMin = 59, InBetweenStations = new List<Station>()
@@ -69,7 +69,7 @@ namespace netcoreauth.api.DataStore
                         new Station { Id = 4, Name = "Nagpur", DepartHrs = 02, DepartMin = 00, Accuracy = 32  },
                         new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 03, DepartMin = 00, Accuracy = 45  },
                         new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 04, DepartMin = 00, Accuracy = 65  }
-                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 10 }, new Prediction { Class = "ac3", Accuracy = 40 } } },
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "Sleeper", Accuracy = 10 }, new Prediction { Class = "AC3", Accuracy = 40 } } },
 
       new Train { TrainNumber = 05611, Name = "Lokmanyatilak Special", TrainType = 0.8, From = "Mumbai", DepartHrs = 21,
                       DepartMin = 59, InBetweenStations = new List<Station>()
@@ -79,7 +79,7 @@ namespace netcoreauth.api.DataStore
                         new Station { Id = 4, Name = "Nagpur", DepartHrs = 01, DepartMin = 00, Accuracy = 21  },
                         new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 02, DepartMin = 00, Accuracy = 25  },
                         new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 04, DepartMin = 00, Accuracy = 15 }
-                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 60 }, new Prediction { Class = "ac3", Accuracy = 80 } } },
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "Sleeper", Accuracy = 60 }, new Prediction { Class = "AC3", Accuracy = 80 } } },
 
       new Train { TrainNumber = 12151, Name = "Samarsata", TrainType = 0.4, From = "Mumbai", DepartHrs = 10,
                       DepartMin = 59, InBetweenStations = new List<Station>()
@@ -89,7 +89,7 @@ namespace netcoreauth.api.DataStore
                         new Station { Id = 4, Name = "Nagpur", DepartHrs = 18, DepartMin = 00, Accuracy = 20  },
                         new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 20, DepartMin = 00, Accuracy = 20  },
                         new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 23, DepartMin = 00, Accuracy = 20  }
-                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 30 }, new Prediction { Class = "ac3", Accuracy = 30 } } },
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "Sleeper", Accuracy = 30 }, new Prediction { Class = "AC3", Accuracy = 30 } } },
 
       new Train { TrainNumber = 18029, Name = "Shalimar", TrainType = 0.4, From = "Mumbai", DepartHrs = 22,
                       DepartMin = 59, InBetweenStations = new List<Station>()
@@ -99,7 +99,7 @@ namespace netcoreauth.api.DataStore
                         new Station { Id = 4, Name = "Nagpur", DepartHrs = 04, DepartMin = 00, Accuracy = 20  },
                         new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 06, DepartMin = 00, Accuracy = 20  },
                         new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 07, DepartMin = 00, Accuracy = 20  }
-                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 80 }, new Prediction { Class = "ac3", Accuracy = 50 } } },
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "Sleeper", Accuracy = 80 }, new Prediction { Class = "AC3", Accuracy = 50 } } },
 
       //new Train { TrainNumber = 12434, Name = "Chennai Rajdhani", From = "Mumbai", DepartHrs = 23,
       //                DepartMin = 00,InBetweenStations = new List<Station>()
@@ -109,7 +109,7 @@ namespace netcoreauth.api.DataStore
       //                  new Station { Id = 4, Name = "Nagpur", DepartHrs = 05, DepartMin = 00 },
       //                  new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 06, DepartMin = 00 },
       //                  new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 07, DepartMin = 00 }
-      //            }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 100 }, new Prediction { Class = "ac3", Accuracy = 10 } } },
+      //            }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "Sleeper", Accuracy = 100 }, new Prediction { Class = "AC3", Accuracy = 10 } } },
 
       //new Train { TrainNumber = 12406, Name = "Gondwana Express", From = "Mumbai", DepartHrs = 09,
       //                DepartMin = 00, InBetweenStations = new List<Station>()
@@ -119,7 +119,7 @@ namespace netcoreauth.api.DataStore
       //                  new Station { Id = 4, Name = "Nagpur", DepartHrs = 17, DepartMin = 00 },
       //                  new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 18, DepartMin = 00 },
       //                  new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 21, DepartMin = 00 }
-      //            }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 50 }, new Prediction { Class = "ac3", Accuracy = 70 } } }
+      //            }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "Sleeper", Accuracy = 50 }, new Prediction { Class = "AC3", Accuracy = 70 } } }
         };
 
     public static List<BogiModel> BogiList = new List<BogiModel>() {

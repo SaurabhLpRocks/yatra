@@ -123,18 +123,20 @@ namespace netcoreauth.api.Repository
         var data = list.Where(x => x.From.ToLower().Equals(from.ToLower()) || x.InBetweenStations.Any(y => y.Name.ToLower().Equals(from.ToLower())) && x.To.ToLower().Equals(to.ToLower()) || x.InBetweenStations.Any(y => y.Name.ToLower().Equals(to.ToLower()))).ToList();
         foreach (var item in data)
         {
-          if (item.From == from)
-          {
-            item.Prediction.FirstOrDefault().Accuracy = this.GetPrediction(item.TrainType, 0.33, 0.06, random.Next(0, 4), item.DepartHrs);
-          }
-          else
-          {
-            int index = item.InBetweenStations.FindIndex(a => a.Name == from);
-            for (int i = index; i < item.InBetweenStations.Count(); i++)
-            {
-              item.InBetweenStations[i].Accuracy = this.GetPrediction(item.TrainType, 0.66, 0.18, random.Next(0, 4), item.InBetweenStations[i].DepartHrs);
-            }
-          }
+           item.Prediction.FirstOrDefault().Accuracy = this.GetPrediction(item.TrainType, 0.33, 0.06, random.Next(0, 4), item.DepartHrs);
+
+        //if (item.From == from)
+        //  {
+        //    item.Prediction.FirstOrDefault().Accuracy = this.GetPrediction(item.TrainType, 0.33, 0.06, random.Next(0, 4), item.DepartHrs);
+        //  }
+          //else
+          //{
+          //  int index = item.InBetweenStations.FindIndex(a => a.Name == from);
+          //  for (int i = index; i < item.InBetweenStations.Count(); i++)
+          //  {
+          //    item.InBetweenStations[i].Accuracy = this.GetPrediction(item.TrainType, 0.66, 0.18, random.Next(0, 4), item.InBetweenStations[i].DepartHrs);
+          //  }
+          //}
         }
         return data;
       //  }
