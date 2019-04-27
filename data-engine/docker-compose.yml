@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  yatra.data.engine:
+    image: yatra.data.engine.prod.image
+    container_name: yatra.data.engine.prod.container
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - 5000:5000
+      - 80:80
