@@ -5,6 +5,7 @@
 
 
 from flask import Flask, jsonify  # From module flask import class Flask
+from TrainedModel import predict
 app = Flask(__name__)    # Construct an instance of Flask class for our webapp
 
 @app.route('/', methods=['GET'])   # URL '/' to be handled by main() route handler
@@ -27,7 +28,7 @@ def GetCity():
             "name" : "Mumbai"
         },
     )
-
+	
 if __name__ == '__main__':  # Script executed directly?
     app.run(host ="localhost", port=4000)  # Launch built-in web server and run this Flask webapp
 
