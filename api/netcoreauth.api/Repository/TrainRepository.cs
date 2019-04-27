@@ -89,49 +89,82 @@ namespace netcoreauth.api.Repository
 
     public List<Train> GetTrains(string from, string to)
     {
-      if (string.IsNullOrEmpty(from))
-      {
-        if (string.IsNullOrEmpty(to))
+      //if (string.IsNullOrEmpty(from))
+      //{
+      //  if (string.IsNullOrEmpty(to))
+      //  {
+      //    
+      //    var data = TrainDataStore.TrainList.Where(x => this.GetTrainStatus(x)).ToList();
+      //    foreach(var item in data)
+      //    {
+      //      item.Prediction.FirstOrDefault().Accuracy = this.GetPrediction(item.TrainType, 0.33, ); 
+      //    }
+      //  }
+      //  else
+      //  {
+      //    var list = TrainDataStore.TrainList;
+      //    return list.Where(x => x.To.ToLower().Equals(to.ToLower()) ||
+      //                            x.InBetweenStations.Any(y => y.Name.ToLower().Equals(to.ToLower()))).Where(x => this.GetTrainStatus(x) && this.GetTrainStatusInBetStation(x)).ToList();
+      //  }
+      //}
+      //else
+      //{
+      //  if (string.IsNullOrEmpty(to))
+      //  {
+      //    var list = TrainDataStore.TrainList;
+      //    return list.Where(x => x.From.ToLower().Equals(from.ToLower()) ||
+      //                    x.InBetweenStations.Any(y => y.Name.ToLower().Equals(from.ToLower()))).Where(x => this.GetTrainStatus(x) && this.GetTrainStatusInBetStation(x)).ToList();
+      //  }
+      //  else
+      //  {
+
+        Random random = new Random();
+        var list = TrainDataStore.TrainList;
+        var data = list.Where(x => x.From.ToLower().Equals(from.ToLower()) || x.InBetweenStations.Any(y => y.Name.ToLower().Equals(from.ToLower())) && x.To.ToLower().Equals(to.ToLower()) || x.InBetweenStations.Any(y => y.Name.ToLower().Equals(to.ToLower()))).ToList();
+        foreach (var item in data)
         {
-          return TrainDataStore.TrainList.Where(x => this.GetTrainStatus(x)).ToList();
+          if (item.From == from)
+          {
+            item.Prediction.FirstOrDefault().Accuracy = this.GetPrediction(item.TrainType, 0.33, 0.06, random.Next(0, 4), item.DepartHrs);
+          }
+          else
+          {
+            int index = item.InBetweenStations.FindIndex(a => a.Name == from);
+            for (int i = index; i < item.InBetweenStations.Count(); i++)
+            {
+              item.InBetweenStations[i].Accuracy = this.GetPrediction(item.TrainType, 0.66, 0.18, random.Next(0, 4), item.InBetweenStations[i].DepartHrs);
+            }
+          }
         }
-        else
-        {
-          var list = TrainDataStore.TrainList;
-          return list.Where(x => x.To.ToLower().Equals(to.ToLower()) ||
-                                  x.InBetweenStations.Any(y => y.Name.ToLower().Equals(to.ToLower()))).Where(x => this.GetTrainStatus(x) && this.GetTrainStatusInBetStation(x)).ToList();
-        }
-      }
-      else
-      {
-        if (string.IsNullOrEmpty(to))
-        {
-          var list = TrainDataStore.TrainList;
-          return list.Where(x => x.From.ToLower().Equals(from.ToLower()) ||
-                          x.InBetweenStations.Any(y => y.Name.ToLower().Equals(from.ToLower()))).Where(x => this.GetTrainStatus(x) && this.GetTrainStatusInBetStation(x)).ToList();
-        }
-        else
-        {
-          var list = TrainDataStore.TrainList;
-          return list.Where(x => x.From.ToLower().Equals(from.ToLower()) || x.InBetweenStations.Any(y => y.Name.ToLower().Equals(from.ToLower())) && x.To.ToLower().Equals(to.ToLower()) || x.InBetweenStations.Any(y => y.Name.ToLower().Equals(to.ToLower()))).Where(x => this.GetTrainStatus(x) && this.GetTrainStatusInBetStation(x)).ToList();
-        }
-      }
+        return data;
+      //  }
+      //}
     }
 
-    public string getstring(string user, string pwd)
+    public int GetPrediction(double traintype, double isHoliday, double seatsVacant, int delay, int arrival)
     {
+      int responseString = 0;
       using (var client = new HttpClient())
       {
-        client.BaseAddress = new Uri("http://localhost:4000");
-        client.DefaultRequestHeaders.Accept.Clear();
-        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        var response = client.GetAsync("/").Result;
-        if (response.IsSuccessStatusCode)
+        try
         {
-          var responseString = response.Content.ReadAsStringAsync().Result;
-          //var modelObject = response.Content.ReadAsAsync<Student>().Result;
+          //Random random = new Random();
+          //= random.Next(10, 30);
+          client.BaseAddress = new Uri("http://localhost:5000");
+          client.DefaultRequestHeaders.Accept.Clear();
+          client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+          var response = client.GetAsync($"/predict?trainType={traintype}&isHoliday={isHoliday}&seatsVacant={seatsVacant}&delay={delay}&arrival={arrival}").Result;
+          if (response.IsSuccessStatusCode)
+          {
+            responseString = Convert.ToInt32(response.Content.ReadAsStringAsync().Result);
+            //var modelObject = response.Content.ReadAsAsync<Student>().Result;
+          }
+          return responseString;
         }
-        return response.Content.ToString();
+        catch (Exception ex)
+        {
+          return responseString = 66;
+        }        
       }
     }
 

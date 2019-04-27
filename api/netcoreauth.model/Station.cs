@@ -10,5 +10,6 @@ namespace netcoreauth.model
     public string Name { get; set; }
     public int DepartHrs { get; set; }
     public int DepartMin { get; set; }
+    public int Accuracy { get; set; }
   }
 }
