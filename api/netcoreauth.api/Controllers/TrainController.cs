@@ -28,9 +28,9 @@ namespace netcoreauth.api.Controllers
     }
 
     [HttpGet("GetCities")]
-    public IActionResult GetCities(string search)
+    public IActionResult GetCities()
     {
-      var data = _iTrainService.GetCities(search);
+      var data = _iTrainService.GetCities();
       return Ok(data);
     }
 

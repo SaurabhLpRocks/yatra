@@ -73,7 +73,7 @@ export class TtViewComponent implements OnInit {
       name && this.names.push(name);
 
       this.TtViewService.replacePassengerData(passenger, name).subscribe(x => {
-       passenger.isReplaced = true;
+        passenger.isReplaced = true;
 
         this.passengers.splice(oldPassengerIndex + 1, 0, x);
       });
