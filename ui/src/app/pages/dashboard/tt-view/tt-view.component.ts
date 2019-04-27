@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
+import { AddPassengerDialogComponent } from './add-passenger-dialog/add-passenger-dialog.component';
 import { TtViewService } from './tt-view.service';
 
 @Component({
@@ -8,6 +10,8 @@ import { TtViewService } from './tt-view.service';
   providers: [TtViewService],
 })
 export class TtViewComponent implements OnInit {
+  names: string[] = [];
+
   selectedBogi: { name: string; code: string };
   bogiList: any[];
   passengers: any[];
@@ -15,7 +19,7 @@ export class TtViewComponent implements OnInit {
   selectedTrain: number = 12345;
 
   selectedBogiId: 0;
-  constructor(private TtViewService: TtViewService) {}
+  constructor(private TtViewService: TtViewService, private dialogService: NbDialogService) {}
 
   ngOnInit() {
     this.TtViewService.getBogiListByTrain(this.selectedTrain).subscribe(bogiList => {
@@ -52,19 +56,28 @@ export class TtViewComponent implements OnInit {
     this.selectedBogiId = value.id;
 
     this.setPassengersList(this.selectedTrain, value.id);
-
-    // if (value && value.id) {
-    //   this.TtViewService.getPassengersListByBogi(this.selectedTrain, value.id).subscribe(passengers => {
-    //     this.passengers = passengers;
-    //     console.log('bogiSelected : ', this.passengers);
-    //   });
-    // } else {
-    //   console.log('bogiSelected : ', this.passengers);
-    //   this.setPassengersList(this.selectedTrain, value.id);
-    // }
   }
 
   togglePassengerPresence(e, row) {
     row.isPresent = e;
+    console.log(e);
+    this.TtViewService.updatePassengerData(row).subscribe(x => {
+      console.log(x);
+    });
+  }
+
+  addPassenger(passenger) {
+    const oldPassengerIndex = this.passengers.indexOf(passenger);
+
+    this.dialogService.open(AddPassengerDialogComponent).onClose.subscribe(name => {
+      name && this.names.push(name);
+
+      this.TtViewService.replacePassengerData(passenger, name).subscribe(x => {
+       passenger.isReplaced = true;
+
+        this.passengers.splice(oldPassengerIndex + 1, 0, x);
+      });
+    });
+    console.log(passenger);
   }
 }

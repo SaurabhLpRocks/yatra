@@ -72,4 +72,23 @@ export class TtViewService {
       return observableOf(passengersByBogiId);
     }
   }
+
+  updatePassengerData(data): Observable<any> {
+    const url = `${environment.apiHost}/Train/PostPassenger`;
+    return this.http.post<any>(url, data).pipe(
+      map(data => {
+        this.passengers = data;
+        return data;
+      }),
+    );
+  }
+
+  replacePassengerData(oldPassengerData, newPassengerName): Observable<any> {
+    const url = `${environment.apiHost}/Train/ReplacePassenger`;
+    return this.http.post<any>(url, { PassengerModel: oldPassengerData, NewPassengerName: newPassengerName }).pipe(
+      map(data => {
+        return data;
+      }),
+    );
+  }
 }

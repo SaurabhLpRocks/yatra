@@ -20,7 +20,7 @@ namespace netcoreauth.api.Repository
 
   public class TrainRepository : ITrainRepository
   {
-    public List<DropDownModel>  GetCities(string search)
+    public List<DropDownModel> GetCities(string search)
     {
       var list = TrainDataStore.TrainList;
       List<string> from = list.Select(x => x.From).Distinct().ToList();
@@ -34,7 +34,9 @@ namespace netcoreauth.api.Repository
       {
         inbetween.Add(item);
       }
-      
+
+      return ReturnListInDropDownModel(inbetween.Select(x => x).Distinct().ToList());
+
       if (string.IsNullOrEmpty(search))
       {
         return ReturnListInDropDownModel(inbetween.Select(x => x).Distinct().ToList());
@@ -49,7 +51,7 @@ namespace netcoreauth.api.Repository
     {
       List<DropDownModel> dropDownList = new List<DropDownModel>();
 
-      dropDownList.Add(new DropDownModel { Name = "Select Station", Code = null});
+      dropDownList.Add(new DropDownModel { Name = "Select Station", Code = null });
 
       int count = 1;
       foreach (string station in inbetween)
@@ -136,5 +138,72 @@ namespace netcoreauth.api.Repository
       }
       return sortedPassengers;
     }
+
+    public bool UpdatePassengerPresentStatus(PassengerModel data)
+    {
+      try
+      {
+        PassengerModel passenger = TrainDataStore.Passengers.Where(x => x.Id == data.Id).FirstOrDefault();
+
+        int index = TrainDataStore.Passengers.IndexOf(passenger);
+        passenger.IsPresent = data.IsPresent;
+
+        TrainDataStore.Passengers[index] = passenger;
+        return true;
+      }
+      catch (Exception)
+      {
+        return false;
+
+      }
+
+    }
+
+    public PassengerModel ReplacePassenger(ReplacePassengerModel rModel)
+    {
+
+      PassengerModel passnger = TrainDataStore.Passengers.Where(x => x.Id == rModel.PassengerModel.Id).FirstOrDefault();
+
+      int index = TrainDataStore.Passengers.IndexOf(passnger);
+
+      PassengerModel newPassnger = rModel.PassengerModel;
+
+      passnger.IsReplaced = true;
+      TrainDataStore.Passengers[index] = passnger;
+
+      newPassnger.Id = GetPassengerId();
+      newPassnger.Name = rModel.NewPassengerName;
+      newPassnger.IsPresent = true;
+      newPassnger.IsReplaced = false;
+      TrainDataStore.Passengers.Insert(index + 1, newPassnger);
+
+      return newPassnger;
+    }
+
+    public int GetPassengerId()
+    {
+      int lastIndex = TrainDataStore.Passengers.Count() + 1;
+
+      bool findUniqueId = false;
+
+      PassengerModel passenger = new PassengerModel();
+      while (!findUniqueId)
+      {
+        passenger = TrainDataStore.Passengers.Where(x => x.Id == lastIndex).FirstOrDefault();
+        if (passenger == null)
+        {
+          findUniqueId = true;
+        }
+        else
+        {
+          lastIndex += 1;
+        }
+      }
+
+      return lastIndex;
+    }
+
+
   }
+
 }

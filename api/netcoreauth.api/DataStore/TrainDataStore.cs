@@ -142,23 +142,31 @@ namespace netcoreauth.api.DataStore
       new PassengerModel { Id = 6, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=3 , Name = "Swapnil", IsPresent=true},
       new PassengerModel { Id = 7, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=4 , Name = "Chetan", IsPresent=true},
     };
-}
+  }
 
-public class BogiModel
-{
-  public int Id { get; set; }
-  public int TrainNumber { get; set; }
-  public string Bogi { get; set; }
-}
+  public class BogiModel
+  {
+    public int Id { get; set; }
+    public int TrainNumber { get; set; }
+    public string Bogi { get; set; }
+  }
 
-public class PassengerModel
-{
-  public int Id { get; set; }
-  public int TrainNumber { get; set; }
-  public string Bogi { get; set; }
-  public int BogiId { get; set; }
-  public int Seat { get; set; }
-  public string Name { get; set; }
-  public bool IsPresent { get; set; }
-}
+  public class PassengerModel
+  {
+    public int Id { get; set; }
+    public int TrainNumber { get; set; }
+    public string Bogi { get; set; }
+    public int BogiId { get; set; }
+    public int Seat { get; set; }
+    public string Name { get; set; }
+    public bool IsPresent { get; set; }
+    public bool? IsReplaced { get; set; }
+  }
+
+  public class ReplacePassengerModel
+  {
+    public PassengerModel PassengerModel { get; set; }
+    public string NewPassengerName { get; set; }
+
+  }
 }

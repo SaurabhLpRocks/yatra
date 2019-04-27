@@ -1,5 +1,5 @@
 <p>
-  <b>Select Coach</b>
+  <b>Select Coach : </b>
   <p-dropdown (onChange)="bogiSelected($event.value)" [options]="bogiList" [(ngModel)]="selectedBogi" optionLabel="name"></p-dropdown>
 </p>
 
@@ -10,7 +10,7 @@
     </th>
   </tr>
   <tr *ngFor="let passenger of passengers">
-    <td *ngFor="let tableCols of passengersTableCol">
+    <td *ngFor="let tableCols of passengersTableCol" class="{{ passenger.isReplaced == true ? 'strikeout' : '' }}">
       <span *ngIf="tableCols.field !== 'isPresent'; else toggle">{{ passenger[tableCols.field] }}</span>
       <ng-template #toggle>
         <ui-switch
@@ -21,6 +21,19 @@
           [(ngModel)]="passenger[tableCols.field]"
         ></ui-switch>
       </ng-template>
+
+      <div>
+        <button
+          nbButton
+          outline
+          status="primary"
+          class="btn-demo"
+          (click)="addPassenger(passenger)"
+          *ngIf="tableCols.field == 'isPresent' && passenger[tableCols.field] == false && !(passenger.isReplaced == true)"
+        >
+          Add Passenger
+        </button>
+      </div>
     </td>
   </tr>
 </table>
