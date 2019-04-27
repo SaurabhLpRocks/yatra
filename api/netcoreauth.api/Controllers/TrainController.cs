@@ -32,5 +32,13 @@ namespace netcoreauth.api.Controllers
       var data = _iTrainService.GetCities(search);
       return Ok(data);
     }
+
+
+    [HttpGet("GetPassengers")]
+    public IActionResult GetPassengers(int trainNumber, int bogiId)
+    {
+      var data = _iTrainService.GetPassengers(trainNumber, bogiId);
+      return Ok(data);
+    }
   }
 }
