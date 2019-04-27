@@ -40,5 +40,12 @@ namespace netcoreauth.api.Controllers
       var data = _iTrainService.GetPassengers(trainNumber, bogiId);
       return Ok(data);
     }
+
+    [HttpGet("getpython")]
+    public IActionResult Test()
+    {
+      var data = _iTrainService.getstring("admin", "admin");
+      return Ok(data);
+    }
   }
 }

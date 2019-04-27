@@ -12,117 +12,115 @@ namespace netcoreauth.api.DataStore
         {
             new Train
             {
-                      TrainNumber = 12345,
-                      Name = "Gitanjali",
-                      From = "Nagpur",
+                      TrainNumber = 12859,
+                      Name = "Gitanjali Express",
+                      TrainType = 0.6,
+                      From = "Mumbai",
                       DepartHrs = 22,
                       DepartMin = 59,
                       InBetweenStations = new List<Station>()
-                        { new Station { Id = 1, Name = "Ajni", DepartHrs = 10, DepartMin = 00 },
-                        new Station { Id = 2, Name = "Wardha", DepartHrs = 11, DepartMin = 00 },
-                        new Station { Id = 3, Name = "Pulgaon", DepartHrs = 12, DepartMin = 00 },
-                        new Station { Id = 4, Name = "Badnera", DepartHrs = 13, DepartMin = 00 },
-                        new Station { Id = 5, Name = "Shegaon", DepartHrs = 14, DepartMin = 00 },
-                        new Station { Id = 6, Name = "Daund", DepartHrs = 15, DepartMin = 00 }
-                  }, To= "Pune", TotalHrs = "12:00",
+                        { new Station { Id = 1, Name = "Nasik Road", DepartHrs = 10, DepartMin = 00 },
+                        new Station { Id = 2, Name = "Bhusaval Junction", DepartHrs = 11, DepartMin = 00 },
+                        new Station { Id = 3, Name = "Akola Junction", DepartHrs = 12, DepartMin = 00 },
+                        new Station { Id = 4, Name = "Nagpur", DepartHrs = 13, DepartMin = 00 },
+                        new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 14, DepartMin = 00 },
+                        new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 15, DepartMin = 00 }
+                  }, To= "Kolkata", TotalHrs = "12:00",
                     Prediction = new List<Prediction>()
                         { new Prediction { Class = "sleeper", Accuracy = 20 },
                           new Prediction { Class = "ac3", Accuracy = 50 } }
             },
 
-            new Train { TrainNumber = 5678, Name = "Sampakranti Express", From = "Nagpur",DepartHrs = 20,
+            new Train { TrainNumber = 12101, Name = "Jnaneswari Delx", TrainType = 0.6, From = "Mumbai",DepartHrs = 20,
+                      DepartMin = 59,  InBetweenStations = new List<Station>()
+                        { new Station { Id = 1, Name = "Nasik Road", DepartHrs = 02, DepartMin = 00 },
+                        new Station { Id = 2, Name = "Bhusaval Junction", DepartHrs = 03, DepartMin = 00 },
+                        new Station { Id = 3, Name = "Akola Junction", DepartHrs = 04, DepartMin = 00 },
+                        new Station { Id = 4, Name = "Nagpur", DepartHrs = 06, DepartMin = 00 },
+                        new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 07, DepartMin = 00 },
+                        new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 08, DepartMin = 00 }
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 10 }, new Prediction { Class = "ac3", Accuracy = 90 } } },
+
+            new Train { TrainNumber = 12869, Name = "Howrah Superfast", TrainType = 0.6, From = "Mumbai", DepartHrs = 18,
                       DepartMin = 59, InBetweenStations = new List<Station>()
-                        { new Station { Id = 1, Name = "Ajni", DepartHrs = 10, DepartMin = 00 },
-                        new Station { Id = 2, Name = "Sevagram", DepartHrs = 11, DepartMin = 00 },
-                        new Station { Id = 3, Name = "DhamanGaon", DepartHrs = 12, DepartMin = 00 },
-                        new Station { Id = 4, Name = "Egatpuri", DepartHrs = 13, DepartMin = 00 },
-                        new Station { Id = 5, Name = "Kalyan", DepartHrs = 14, DepartMin = 00 },
-                        new Station { Id = 6, Name = "Dadar", DepartHrs = 15, DepartMin = 00 }
-                  }, TotalHrs = "02:00", To= "Mumbai", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 10 }, new Prediction { Class = "ac3", Accuracy = 90 } } },
+                        { new Station { Id = 1, Name = "Nasik Road", DepartHrs = 20, DepartMin = 00 },
+                        new Station { Id = 2, Name = "Bhusaval Junction", DepartHrs = 21, DepartMin = 00 },
+                        new Station { Id = 3, Name = "Akola Junction", DepartHrs = 22, DepartMin = 00 },
+                        new Station { Id = 4, Name = "Nagpur", DepartHrs = 23, DepartMin = 00 },
+                        new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 24, DepartMin = 00 },
+                        new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 25, DepartMin = 00 }
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 20 }, new Prediction { Class = "ac3", Accuracy = 60 } } },
 
-            new Train { TrainNumber = 22692, Name = "Bangalore Rajdhani", From = "Mumbai", DepartHrs = 18,
-                      DepartMin = 59,  InBetweenStations = new List<Station>()
-                        { new Station { Id = 1, Name = "Pune", DepartHrs = 10, DepartMin = 00 },
-                        new Station { Id = 2, Name = "belgaum", DepartHrs = 11, DepartMin = 00 },
-                        new Station { Id = 3, Name = "Davangere", DepartHrs = 12, DepartMin = 00 },
-                        new Station { Id = 4, Name = "Kadur", DepartHrs = 13, DepartMin = 00 },
-                        new Station { Id = 5, Name = "Kalyan", DepartHrs = 14, DepartMin = 00 },
-                        new Station { Id = 6, Name = "Tumkur", DepartHrs = 15, DepartMin = 00 }
-                  },
-                   To= "Bangalore", TotalHrs = "02:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 20 }, new Prediction { Class = "ac3", Accuracy = 60 } } },
+      new Train { TrainNumber = 12809, Name = "Howrah Mail", TrainType = 0.6, From = "Mumbai", DepartHrs = 19,
+                      DepartMin = 59, InBetweenStations = new List<Station>()
+                        { new Station { Id = 1, Name = "Nasik Road", DepartHrs = 20, DepartMin = 00 },
+                        new Station { Id = 2, Name = "Bhusaval Junction", DepartHrs = 22, DepartMin = 00 },
+                        new Station { Id = 3, Name = "Akola Junction", DepartHrs = 23, DepartMin = 00 },
+                        new Station { Id = 4, Name = "Nagpur", DepartHrs = 02, DepartMin = 00 },
+                        new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 03, DepartMin = 00 },
+                        new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 04, DepartMin = 00 }
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 24 }, new Prediction { Class = "ac3", Accuracy = 20 } } },
 
-      new Train { TrainNumber = 12622, Name = "TamilNadu Express", From = "Hyderabad", DepartHrs = 19,
-                      DepartMin = 59,  InBetweenStations = new List<Station>()
-                        { new Station { Id = 1, Name = "Secundarabad", DepartHrs = 10, DepartMin = 00 },
-                        new Station { Id = 2, Name = "Lingampalli", DepartHrs = 11, DepartMin = 00 },
-                        new Station { Id = 3, Name = "Raichur", DepartHrs = 12, DepartMin = 00 },
-                        new Station { Id = 4, Name = "Kadur", DepartHrs = 13, DepartMin = 00 },
-                        new Station { Id = 5, Name = "Hindupur", DepartHrs = 14, DepartMin = 00 },
-                        new Station { Id = 6, Name = "Tumkur", DepartHrs = 15, DepartMin = 00 }
-                  },
-                   To= "Bangalore", TotalHrs = "02:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 24 }, new Prediction { Class = "ac3", Accuracy = 20 } } },
+      new Train { TrainNumber = 15611, Name = "Karmabhoomi", TrainType = 0.6, From = "Mumbai", DepartHrs = 19,
+                      DepartMin = 59, InBetweenStations = new List<Station>()
+                        { new Station { Id = 1, Name = "Nasik Road", DepartHrs = 20, DepartMin = 00 },
+                        new Station { Id = 2, Name = "Bhusaval Junction", DepartHrs = 22, DepartMin = 00 },
+                        new Station { Id = 3, Name = "Akola Junction", DepartHrs = 23, DepartMin = 00 },
+                        new Station { Id = 4, Name = "Nagpur", DepartHrs = 02, DepartMin = 00 },
+                        new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 03, DepartMin = 00 },
+                        new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 04, DepartMin = 00 }
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 10 }, new Prediction { Class = "ac3", Accuracy = 40 } } },
 
-      new Train { TrainNumber = 12722, Name = "Dakshin Express", From = "Hyderabad", DepartHrs = 19,
-                      DepartMin = 59,  InBetweenStations = new List<Station>()
-                        { new Station { Id = 1, Name = "Begumpeth", DepartHrs = 10, DepartMin = 00 },
-                        new Station { Id = 2, Name = "Zahirabad", DepartHrs = 11, DepartMin = 00 },
-                        new Station { Id = 3, Name = "Latur", DepartHrs = 12, DepartMin = 00 },
-                        new Station { Id = 4, Name = "Usmanabad", DepartHrs = 13, DepartMin = 00 },
-                        new Station { Id = 5, Name = "Daund", DepartHrs = 14, DepartMin = 00 },
-                        new Station { Id = 6, Name = "Tumkur", DepartHrs = 15, DepartMin = 00 }
-                  }, To= "Pune", TotalHrs = "02:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 10 }, new Prediction { Class = "ac3", Accuracy = 40 } } },
+      new Train { TrainNumber = 05611, Name = "Lokmanyatilak Special", TrainType = 0.8, From = "Mumbai", DepartHrs = 21,
+                      DepartMin = 59, InBetweenStations = new List<Station>()
+                        { new Station { Id = 1, Name = "Nasik Road", DepartHrs = 22, DepartMin = 00 },
+                        new Station { Id = 2, Name = "Bhusaval Junction", DepartHrs = 23, DepartMin = 00 },
+                        new Station { Id = 3, Name = "Akola Junction", DepartHrs = 24, DepartMin = 00 },
+                        new Station { Id = 4, Name = "Nagpur", DepartHrs = 01, DepartMin = 00 },
+                        new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 02, DepartMin = 00 },
+                        new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 04, DepartMin = 00 }
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 60 }, new Prediction { Class = "ac3", Accuracy = 80 } } },
 
-      new Train { TrainNumber = 22416, Name = "A P Express", From = "Pune", DepartHrs = 21,
-                      DepartMin = 59,   InBetweenStations = new List<Station>()
-                        { new Station { Id = 1, Name = "Daund", DepartHrs = 10, DepartMin = 00 },
-                        new Station { Id = 2, Name = "Kopargaon", DepartHrs = 11, DepartMin = 00 },
-                        new Station { Id = 3, Name = "Shegaon", DepartHrs = 12, DepartMin = 00 },
-                        new Station { Id = 4, Name = "Akola", DepartHrs = 13, DepartMin = 00 },
-                        new Station { Id = 5, Name = "Pulgaon", DepartHrs = 14, DepartMin = 00 },
-                        new Station { Id = 6, Name = "Ajni", DepartHrs = 15, DepartMin = 00 }
-                  }, To= "Nagpur", TotalHrs = "02:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 60 }, new Prediction { Class = "ac3", Accuracy = 80 } } },
+      new Train { TrainNumber = 12151, Name = "Samarsata", TrainType = 0.4, From = "Mumbai", DepartHrs = 10,
+                      DepartMin = 59, InBetweenStations = new List<Station>()
+                        { new Station { Id = 1, Name = "Nasik Road", DepartHrs = 11, DepartMin = 00 },
+                        new Station { Id = 2, Name = "Bhusaval Junction", DepartHrs = 13, DepartMin = 00 },
+                        new Station { Id = 3, Name = "Akola Junction", DepartHrs = 14, DepartMin = 00 },
+                        new Station { Id = 4, Name = "Nagpur", DepartHrs = 18, DepartMin = 00 },
+                        new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 20, DepartMin = 00 },
+                        new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 23, DepartMin = 00 }
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 30 }, new Prediction { Class = "ac3", Accuracy = 30 } } },
 
-      new Train { TrainNumber = 12808, Name = "Samata Express", From = "Delhi", DepartHrs = 21,
-                      DepartMin = 59,  InBetweenStations = new List<Station>()
-                        { new Station { Id = 1, Name = "Mathura", DepartHrs = 10, DepartMin = 00 },
-                        new Station { Id = 2, Name = "Agra", DepartHrs = 11, DepartMin = 00 },
-                        new Station { Id = 3, Name = "Gwalior", DepartHrs = 12, DepartMin = 00 },
-                        new Station { Id = 4, Name = "Nagpur", DepartHrs = 13, DepartMin = 00 },
-                        new Station { Id = 5, Name = "Balharshah", DepartHrs = 14, DepartMin = 00 },
-                        new Station { Id = 6, Name = "Secundarabad", DepartHrs = 15, DepartMin = 00 }
-                  }, To= "Hyderabad", TotalHrs = "02:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 30 }, new Prediction { Class = "ac3", Accuracy = 30 } } },
+      new Train { TrainNumber = 18029, Name = "Shalimar", TrainType = 0.4, From = "Mumbai", DepartHrs = 22,
+                      DepartMin = 59, InBetweenStations = new List<Station>()
+                        { new Station { Id = 1, Name = "Nasik Road", DepartHrs = 23, DepartMin = 00 },
+                        new Station { Id = 2, Name = "Bhusaval Junction", DepartHrs = 24, DepartMin = 00 },
+                        new Station { Id = 3, Name = "Akola Junction", DepartHrs = 03, DepartMin = 00 },
+                        new Station { Id = 4, Name = "Nagpur", DepartHrs = 04, DepartMin = 00 },
+                        new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 06, DepartMin = 00 },
+                        new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 07, DepartMin = 00 }
+                  }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 80 }, new Prediction { Class = "ac3", Accuracy = 50 } } },
 
-      new Train { TrainNumber = 12626, Name = "Kerala Express", From = "Nagpur", DepartHrs = 22,
-                      DepartMin = 59,  InBetweenStations = new List<Station>()
-                        { new Station { Id = 1, Name = "Balharshah", DepartHrs = 10, DepartMin = 00 },
-                        new Station { Id = 2, Name = "Warangel", DepartHrs = 11, DepartMin = 00 },
-                        new Station { Id = 3, Name = "Tirupati", DepartHrs = 12, DepartMin = 00 },
-                        new Station { Id = 4, Name = "Chittor", DepartHrs = 13, DepartMin = 00 },
-                        new Station { Id = 5, Name = "Balharshah", DepartHrs = 14, DepartMin = 00 },
-                        new Station { Id = 6, Name = "Trivandram", DepartHrs = 15, DepartMin = 00 }
-                  }, To= "Kerala", TotalHrs = "02:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 80 }, new Prediction { Class = "ac3", Accuracy = 50 } } },
+      //new Train { TrainNumber = 12434, Name = "Chennai Rajdhani", From = "Mumbai", DepartHrs = 23,
+      //                DepartMin = 00,InBetweenStations = new List<Station>()
+      //                  { new Station { Id = 1, Name = "Nasik Road", DepartHrs = 01, DepartMin = 00 },
+      //                  new Station { Id = 2, Name = "Bhusaval Junction", DepartHrs = 02, DepartMin = 00 },
+      //                  new Station { Id = 3, Name = "Akola Junction", DepartHrs = 04, DepartMin = 00 },
+      //                  new Station { Id = 4, Name = "Nagpur", DepartHrs = 05, DepartMin = 00 },
+      //                  new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 06, DepartMin = 00 },
+      //                  new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 07, DepartMin = 00 }
+      //            }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 100 }, new Prediction { Class = "ac3", Accuracy = 10 } } },
 
-      new Train { TrainNumber = 12434, Name = "Chennai Rajdhani", From = "Pune", DepartHrs = 23,
-                      DepartMin = 00, InBetweenStations = new List<Station>()
-                        { new Station { Id = 1, Name = "Gulbarga", DepartHrs = 10, DepartMin = 00 },
-                        new Station { Id = 2, Name = "Yadir", DepartHrs = 11, DepartMin = 00 },
-                        new Station { Id = 3, Name = "Raichur", DepartHrs = 12, DepartMin = 00 },
-                        new Station { Id = 4, Name = "Chittor", DepartHrs = 13, DepartMin = 00 },
-                        new Station { Id = 5, Name = "Razampetha", DepartHrs = 14, DepartMin = 00 },
-                        new Station { Id = 6, Name = "Perambur", DepartHrs = 15, DepartMin = 00 }
-                  }, To= "Chennai", TotalHrs = "02:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 100 }, new Prediction { Class = "ac3", Accuracy = 10 } } },
-
-      new Train { TrainNumber = 12406, Name = "Gondwana Express", From = "Nagpur", DepartHrs = 09,
-                      DepartMin = 00, InBetweenStations = new List<Station>()
-                        { new Station { Id = 1, Name = "Ajni", DepartHrs = 10, DepartMin = 00 },
-                        new Station { Id = 2, Name = "Wardha", DepartHrs = 11, DepartMin = 00 },
-                        new Station { Id = 3, Name = "Shegaon", DepartHrs = 12, DepartMin = 00 },
-                        new Station { Id = 4, Name = "Bhusawal", DepartHrs = 13, DepartMin = 00 },
-                        new Station { Id = 5, Name = "Kopargaon", DepartHrs = 14, DepartMin = 00 },
-                        new Station { Id = 6, Name = "Daund", DepartHrs = 15, DepartMin = 00 }
-                  }, To= "Pune", TotalHrs = "02:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 50 }, new Prediction { Class = "ac3", Accuracy = 70 } } }
+      //new Train { TrainNumber = 12406, Name = "Gondwana Express", From = "Mumbai", DepartHrs = 09,
+      //                DepartMin = 00, InBetweenStations = new List<Station>()
+      //                  { new Station { Id = 1, Name = "Nasik Road", DepartHrs = 10, DepartMin = 00 },
+      //                  new Station { Id = 2, Name = "Bhusaval Junction", DepartHrs = 13, DepartMin = 00 },
+      //                  new Station { Id = 3, Name = "Akola Junction", DepartHrs = 14, DepartMin = 00 },
+      //                  new Station { Id = 4, Name = "Nagpur", DepartHrs = 17, DepartMin = 00 },
+      //                  new Station { Id = 5, Name = "Bilaspur Junction", DepartHrs = 18, DepartMin = 00 },
+      //                  new Station { Id = 6, Name = "Kharagpur Junction", DepartHrs = 21, DepartMin = 00 }
+      //            }, To= "Kolkata", TotalHrs = "12:00", Prediction = new List<Prediction>(){ new Prediction { Class = "sleeper", Accuracy = 50 }, new Prediction { Class = "ac3", Accuracy = 70 } } }
         };
-
 
     public static List<BogiModel> BogiList = new List<BogiModel>() {
       new BogiModel{ Id = 1, Bogi="S3", TrainNumber = 12345},
@@ -142,23 +140,23 @@ namespace netcoreauth.api.DataStore
       new PassengerModel { Id = 6, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=3 , Name = "Swapnil", IsPresent=true},
       new PassengerModel { Id = 7, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=4 , Name = "Chetan", IsPresent=true},
     };
-}
+  }
 
-public class BogiModel
-{
-  public int Id { get; set; }
-  public int TrainNumber { get; set; }
-  public string Bogi { get; set; }
-}
+  public class BogiModel
+  {
+    public int Id { get; set; }
+    public int TrainNumber { get; set; }
+    public string Bogi { get; set; }
+  }
 
-public class PassengerModel
-{
-  public int Id { get; set; }
-  public int TrainNumber { get; set; }
-  public string Bogi { get; set; }
-  public int BogiId { get; set; }
-  public int Seat { get; set; }
-  public string Name { get; set; }
-  public bool IsPresent { get; set; }
-}
+  public class PassengerModel
+  {
+    public int Id { get; set; }
+    public int TrainNumber { get; set; }
+    public string Bogi { get; set; }
+    public int BogiId { get; set; }
+    public int Seat { get; set; }
+    public string Name { get; set; }
+    public bool IsPresent { get; set; }
+  }
 }

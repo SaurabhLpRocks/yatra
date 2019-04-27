@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting.Server;
 using netcoreauth.api.DataStore;
@@ -113,6 +115,23 @@ namespace netcoreauth.api.Repository
           var list = TrainDataStore.TrainList;
           return list.Where(x => x.From.ToLower().Equals(from.ToLower()) || x.InBetweenStations.Any(y => y.Name.ToLower().Equals(from.ToLower())) && x.To.ToLower().Equals(to.ToLower()) || x.InBetweenStations.Any(y => y.Name.ToLower().Equals(to.ToLower()))).Where(x => this.GetTrainStatus(x) && this.GetTrainStatusInBetStation(x)).ToList();
         }
+      }
+    }
+
+    public string getstring(string user, string pwd)
+    {
+      using (var client = new HttpClient())
+      {
+        client.BaseAddress = new Uri("http://localhost:4000");
+        client.DefaultRequestHeaders.Accept.Clear();
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        var response = client.GetAsync("/").Result;
+        if (response.IsSuccessStatusCode)
+        {
+          var responseString = response.Content.ReadAsStringAsync().Result;
+          //var modelObject = response.Content.ReadAsAsync<Student>().Result;
+        }
+        return response.Content.ToString();
       }
     }
 
