@@ -10,7 +10,7 @@ import { environment } from './../../../../environments/environment.prod';
 export class ClientViewService {
   constructor(private http: HttpClient) {}
   getTrainProbabilityData(startStation: string, endStation: string): Observable<any[]> {
-    const url = `${environment.apiHost}/Train?from=` + startStation + '&to=' + endStation;
+    const url = `${environment.apiHost}Train?from=` + startStation + '&to=' + endStation;
     return this.http.get<any>(url).pipe(
       map(data => {
         // login successful if there's a jwt token in the response
@@ -20,7 +20,7 @@ export class ClientViewService {
   }
 
   getStationsList(): Observable<any[]> {
-    return this.http.get<any>(`${environment.apiHost}/Train/GetCities`).pipe(
+    return this.http.get<any>(`${environment.apiHost}Train/GetCities`).pipe(
       map(data => {
         // login successful if there's a jwt token in the response
         return data;
@@ -29,7 +29,7 @@ export class ClientViewService {
   }
 
   sendUserTrainSelectionStatus(trainNumber, userName): Observable<any[]> {
-    return this.http.post<any>(`${environment.apiHost}/Train/SendUserTrainSelectedTrack`, { train: trainNumber, userName: 'user' }).pipe(
+    return this.http.post<any>(`${environment.apiHost}Train/SendUserTrainSelectedTrack`, { train: trainNumber, userName: 'user' }).pipe(
       map(data => {
         // login successful if there's a jwt token in the response
         return data;

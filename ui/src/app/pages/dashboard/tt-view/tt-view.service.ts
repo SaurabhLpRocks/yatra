@@ -49,7 +49,7 @@ export class TtViewService {
 
   getPassengersList(selectedTrain, selectedBogi): Observable<any[]> {
     selectedBogi = selectedBogi || 0;
-    const url = `${environment.apiHost}/Train/GetPassengers?trainNumber=` + selectedTrain + '&bogiId=' + selectedBogi;
+    const url = `${environment.apiHost}Train/GetPassengers?trainNumber=` + selectedTrain + '&bogiId=' + selectedBogi;
     return this.http.get<any>(url).pipe(
       map(data => {
         // login successful if there's a jwt token in the response
@@ -74,7 +74,7 @@ export class TtViewService {
   }
 
   updatePassengerData(data): Observable<any> {
-    const url = `${environment.apiHost}/Train/PostPassenger`;
+    const url = `${environment.apiHost}Train/PostPassenger`;
     return this.http.post<any>(url, data).pipe(
       map(data => {
         this.passengers = data;
@@ -84,7 +84,7 @@ export class TtViewService {
   }
 
   replacePassengerData(oldPassengerData, newPassengerName): Observable<any> {
-    const url = `${environment.apiHost}/Train/ReplacePassenger`;
+    const url = `${environment.apiHost}Train/ReplacePassenger`;
     return this.http.post<any>(url, { PassengerModel: oldPassengerData, NewPassengerName: newPassengerName }).pipe(
       map(data => {
         return data;
