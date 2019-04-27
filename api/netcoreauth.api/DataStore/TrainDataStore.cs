@@ -134,13 +134,17 @@ namespace netcoreauth.api.DataStore
 
     public static List<PassengerModel> Passengers = new List<PassengerModel>()
     {
-      new PassengerModel { Id = 1, TrainNumber = 12345, Bogi="S3", BogiId = 1, Seat=1 , Name = "Sagar Charde", IsPresent=true},
-      new PassengerModel { Id = 2, TrainNumber = 12345, Bogi="S3", BogiId = 1, Seat=2 , Name = "Ram Pyare", IsPresent=true},
+      new PassengerModel { Id = 1, TrainNumber = 12345, Bogi="S3", BogiId = 1, Seat=1 , Name = "Hemendra Prasad ", IsPresent=true},
+      new PassengerModel { Id = 2, TrainNumber = 12345, Bogi="S3", BogiId = 1, Seat=2 , Name = "Urmila Keer ", IsPresent=true},
       new PassengerModel { Id = 3, TrainNumber = 12345, Bogi="S3", BogiId = 1, Seat=3 , Name = "Rahul Warma", IsPresent=true},
-      new PassengerModel { Id = 4, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=1 , Name = "Vaibhav Bharuka", IsPresent=true},
+      new PassengerModel { Id = 4, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=1 , Name = "Nidhi Gala", IsPresent=true},
       new PassengerModel { Id = 5, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=2 , Name = "Sourabh Palatkar", IsPresent=true},
-      new PassengerModel { Id = 6, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=3 , Name = "Swapnil", IsPresent=true},
-      new PassengerModel { Id = 7, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=4 , Name = "Chetan", IsPresent=true},
+      new PassengerModel { Id = 6, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=3 , Name = "Omar Deshpande ", IsPresent=true},
+      new PassengerModel { Id = 7, TrainNumber = 12345, Bogi="S4", BogiId = 2, Seat=4 , Name = "Chetan Sharma", IsPresent=true},
+      new PassengerModel { Id = 8, TrainNumber = 12345, Bogi="S5", BogiId = 3, Seat=10 , Name = "Destin Kuhic", IsPresent=true},
+      new PassengerModel { Id = 9, TrainNumber = 12345, Bogi="S5", BogiId = 3, Seat=11 , Name = "Cierra Crist", IsPresent=true},
+      new PassengerModel { Id = 10, TrainNumber = 12345, Bogi="S5", BogiId = 3, Seat=12 , Name = "Dallas Rogahn", IsPresent=true},
+      new PassengerModel { Id = 11, TrainNumber = 12345, Bogi="S5", BogiId = 3, Seat=12 , Name = "Karen Wilderman", IsPresent=true},
     };
   }
 
