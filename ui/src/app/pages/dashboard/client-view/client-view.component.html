@@ -27,12 +27,28 @@
 </div>
 
 <div style="margin-top: 50px;" *ngIf="isDataPresent">
-  <p-table [columns]="cols" [value]="trainProbabilityDetails" dataKey="trainNumber" rowExpandMode="single">
+  <p-table
+    [columns]="cols"
+    [value]="trainProbabilityDetails"
+    dataKey="trainNumber"
+    rowExpandMode="single"
+    [sortMode]="'single'"
+    [sortField]="'name'"
+    [sortOrder]="1"
+    [paginator]="true"
+    [rows]="5"
+    [totalRecords]="trainProbabilityDetails.length"
+    [rowsPerPageOptions]="[10, 20, 30]"
+    [responsive]="true"
+    [rowHover]="true"
+    #trains
+  >
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th style="width: 3em"></th>
-        <th *ngFor="let col of columns">
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
           {{ col.header }}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
         </th>
       </tr>
     </ng-template>
