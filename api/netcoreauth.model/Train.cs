@@ -10,6 +10,7 @@ namespace netcoreauth.model
     [Key]
     public int TrainNumber { get; set; }
     public string Name { get; set; }
+    public double TrainType { get; set; }
     public string From { get; set; }
     public int DepartHrs { get; set; }
     public int DepartMin { get; set; }

@@ -21,6 +21,7 @@ namespace netcoreauth.api.Business
       return _iTrainRepository.GetCities();
     }
 
+   
     public List<Train> GetTrains(string from, string to)
     {
       return _iTrainRepository.GetTrains(from, to);
