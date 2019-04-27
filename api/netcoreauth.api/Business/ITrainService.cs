@@ -11,7 +11,7 @@ namespace netcoreauth.api.Business
   public interface ITrainService
   {
     List<Train> GetTrains(string from, string to);
-    List<DropDownModel> GetCities(string search);
+    List<DropDownModel> GetCities();
     List<PassengerModel> GetPassengers(int trainNumber, int bogiId);
 
   }
