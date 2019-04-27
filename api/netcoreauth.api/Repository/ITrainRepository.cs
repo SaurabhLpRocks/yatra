@@ -7,10 +7,10 @@ using netcoreauth.model;
 
 namespace netcoreauth.api.Repository
 {
-    public interface ITrainRepository
-    {
-        List<Train> GetTrains(string from, string to);
-     List<DropDownModel> GetCities(string search);
+  public interface ITrainRepository
+  {
+    List<Train> GetTrains(string from, string to);
+    List<DropDownModel> GetCities();
     List<PassengerModel> GetPassengers(int trainNumber, int bogiId);
-    }
+  }
 }

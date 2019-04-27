@@ -20,36 +20,30 @@ namespace netcoreauth.api.Repository
 
   public class TrainRepository : ITrainRepository
   {
-    public List<DropDownModel>  GetCities(string search)
+    public List<DropDownModel> GetCities()
     {
       var list = TrainDataStore.TrainList;
       List<string> from = list.Select(x => x.From).Distinct().ToList();
       List<string> to = list.Select(x => x.To).Distinct().ToList();
-      List<string> inbetween = list.Select(x => x.InBetweenStations.Select(y => y.Name).FirstOrDefault()).Distinct().ToList();
+      List<string> inbetween = list.SelectMany(x => x.InBetweenStations.Select(y => y.Name)).Distinct().ToList();
       foreach (var item in from)
       {
-        inbetween.Add(item);
+        if (!inbetween.Contains(item))
+          inbetween.Add(item);
       }
       foreach (var item in to)
       {
-        inbetween.Add(item);
+        if (!inbetween.Contains(item))
+          inbetween.Add(item);
       }
-      
-      if (string.IsNullOrEmpty(search))
-      {
-        return ReturnListInDropDownModel(inbetween.Select(x => x).Distinct().ToList());
-      }
-      else
-      {
-        return ReturnListInDropDownModel(inbetween.Where(x => x.ToLower().StartsWith(search.ToLower())).Distinct().ToList());
-      }
+      return ReturnListInDropDownModel(inbetween.Select(x => x).Distinct().ToList());
     }
 
     public List<DropDownModel> ReturnListInDropDownModel(List<string> inbetween)
     {
       List<DropDownModel> dropDownList = new List<DropDownModel>();
 
-      dropDownList.Add(new DropDownModel { Name = "Select Station", Code = null});
+      dropDownList.Add(new DropDownModel { Name = "Select Station", Code = null });
 
       int count = 1;
       foreach (string station in inbetween)
