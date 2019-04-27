@@ -47,6 +47,7 @@ namespace netcoreauth.api.Controllers
                 id = getUser.Id,
                 email = getUser.Email,
                 activation = getUser.Is_Activated,
+                role = getUser.Role,
               },
             },
             token = Utilities.GenerateTokens(user, _config),
