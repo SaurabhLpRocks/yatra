@@ -6,33 +6,39 @@
 from flask import Flask, jsonify  # From module flask import class Flask
 
 import tensorflow
-
 from TrainedModel import predict
+
 app = Flask(__name__)    # Construct an instance of Flask class for our webapp
 
-@app.route('/', methods=['GET'])   # URL '/' to be handled by main() route handler
+
+# URL '/' to be handled by main() route handler
+@app.route('/', methods=['GET'])
 def main():
     return jsonify(
         {
-            "user" : "admin",
-            "pass" : "admin"
+            "user": "admin",
+            "pass": "admin"
         })
 
-@app.route('/city', methods=['GET'])   # URL '/' to be handled by main() route handler
+
+# URL '/' to be handled by main() route handler
+@app.route('/city', methods=['GET'])
 def GetCity():
     return jsonify(
         {
-            "id" : "1",
-            "name" : "Nagpur"
+            "id": "1",
+            "name": "Nagpur"
         },
-          {
-            "id" : "2",
-            "name" : "Mumbai"
+        {
+            "id": "2",
+            "name": "Mumbai"
         },
     )
-	
+
+
 if __name__ == '__main__':  # Script executed directly?
-    app.run(host='0.0.0.0')  # Launch built-in web server and run this Flask webapp
+    # Launch built-in web server and run this Flask webapp
+    app.run(host='0.0.0.0')
 
 
 # In[ ]:
