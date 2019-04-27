@@ -24,5 +24,6 @@
   "cSpell.words": [
     "SAURABH"
   ],
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "python.pythonPath": "C:\\Users\\Saurabh.Palatkar\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe"
 }
